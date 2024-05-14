@@ -5,7 +5,7 @@ cd "C:\Users\Nagrywanie\OneDrive - Sławomir Mentzen\Pulpit\Calendesk-HTML-CSS"
 git add .
 
 # Commit changes with a message
-git commit -m "2"
+git commit -m "23"
 
 # Push changes to the remote repository
 git push https://github.com/Hicior/Calendesk.git main
