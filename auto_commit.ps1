@@ -1,11 +1,18 @@
-# Navigate to the repository directory
-cd "C:\Users\Nagrywanie\OneDrive - Sławomir Mentzen\Pulpit\Calendesk-HTML-CSS"
+# auto_commit.ps1
 
-# Add all changes to git
+# Znajdź ścieżkę obecnego katalogu
+$currentDirectory = (Get-Location).Path
+
+# Przejdź do katalogu projektu
+Set-Location -Path $currentDirectory
+
+# Opis commita jako pierwszy argument
+param (
+    [string]$commitMessage = "Automatyczny commit"
+)
+
+# Wykonaj komendy git
 git add .
-
-# Commit changes with a message
-git commit -m "23"
-
-# Push changes to the remote repository
+git commit -m $commitMessage
+git pull https://github.com/Hicior/Calendesk.git main
 git push https://github.com/Hicior/Calendesk.git main
