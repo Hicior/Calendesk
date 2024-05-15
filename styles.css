@@ -452,12 +452,26 @@
   position: fixed; /* Stała pozycja na ekranie */
   bottom: 20px; /* Odległość od dolnej krawędzi */
   right: 20px; /* Odległość od prawej krawędzi */
-  padding: 10px; /* Padding dla lepszego wyglądu */
-  background: #333; /* Tło przycisku */
-  color: white; /* Kolor tekstu */
+  padding: 20px; /* Padding dla lepszego wyglądu */
+  background: white; /* Tło przycisku */
+  color: #333; /* Kolor tekstu */
   text-decoration: none; /* Usunięcie podkreślenia */
-  font-size: 16px; /* Rozmiar czcionki */
-  border-radius: 5px; /* Zaokrąglone rogi */
+  font-size: 24px; /* Rozmiar czcionki */
+  border-radius: 50%; /* Zaokrąglone rogi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień przycisku */
+  transition: transform 0.4s ease, box-shadow 0.3s ease; /* Animacja */
+  display: flex; /* Ustawienie jako flexbox */
+  justify-content: center; /* Wyśrodkowanie ikony w poziomie */
+  align-items: center; /* Wyśrodkowanie ikony w pionie */
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-4px); /* Animacja podnoszenia */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Zwiększony cień przy podniesieniu */
+}
+
+.scroll-to-top i {
+  margin: 0; /* Usuń marginesy z ikony */
 }
 
 /* STANDARD CARDS */
@@ -486,7 +500,7 @@
 
 .standard-card {
 	display: inline-block;
-	width: 90%;
+	width: 250px;
 	max-width: 20rem;
 	margin: 1rem;
 	font-size: 1rem;
