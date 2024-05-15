@@ -149,8 +149,7 @@
 .Link_Right-Side-Image {
   width: 200px; /* Control the image width, make sure it's responsive */
   height: auto; /* Maintain aspect ratio */
-  margin-left: 20px;
-  margin-right: 15px;
+  margin: 20px;
   transition: transform 0.3s ease;
   border: 1px solid #eaeaea; /* Light border for definition */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -159,7 +158,7 @@
 
 .Link_Right-Side-Image:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
-  transform: translateY(-2px); /* Gentle lift effect on hover */
+  transform: translateY(-4px); /* Gentle lift effect on hover */
 }
 
 .DescriptionV1 {
@@ -504,17 +503,27 @@
 
 .standard-card-description {
 	display: block;
-	padding: 1em 0.5em;
+	padding: 0.5em 0.5em;
 	color: #515151;
 	text-decoration: none;
+	position: relative; /* Dodane do umożliwienia pozycjonowania pseudoelementu */
+	cursor: pointer; /* Dodane, aby wskaźnik zmieniał się na kursor */
 }
 
-.standard-card-description > h2 {
-	margin: 0 0 0.5em;
+.standard-card-description::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	left: 50%;
+	background-color: #386D88; /* Dopasowane do koloru tekstu */
+	transition: width 0.4s ease, left 0.4s ease;
 }
 
-.standard-card-description > p {
-	margin: 0;
+.standard-card-description:hover::after {
+	width: 100%;
+	left: 0;
 }
 
 /* Pokaż przycisk po najechaniu - przykładowa interakcja */
