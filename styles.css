@@ -477,7 +477,7 @@
 
 .standard-card-list {
 	display: block;
-	margin: 1rem auto;
+	margin-bottom: 40px;
 	padding: 0;
 	font-size: 0;
 	text-align: center;
@@ -504,7 +504,7 @@
 .standard-card-description {
 	display: block;
 	padding: 0.5em 0.5em;
-	color: #515151;
+	color: #515151 !important;
 	text-decoration: none;
 	position: relative; /* Dodane do umożliwienia pozycjonowania pseudoelementu */
 	cursor: pointer; /* Dodane, aby wskaźnik zmieniał się na kursor */
