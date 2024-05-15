@@ -452,7 +452,7 @@
   position: fixed; /* Stała pozycja na ekranie */
   bottom: 20px; /* Odległość od dolnej krawędzi */
   right: 20px; /* Odległość od prawej krawędzi */
-  padding: 20px; /* Padding dla lepszego wyglądu */
+  padding: 16px; /* Padding dla lepszego wyglądu */
   background: white; /* Tło przycisku */
   color: #333; /* Kolor tekstu */
   text-decoration: none; /* Usunięcie podkreślenia */
@@ -625,5 +625,12 @@
 @media (max-width: 600px) {
   .overlay_title {
       font-size: 28px;
+  }
+}
+
+/* Media query: ukryj przycisk na ekranach mniejszych niż 768px */
+@media (max-width: 768px) {
+  .scroll-to-top {
+      display: none;
   }
 }
