@@ -414,14 +414,98 @@
   border-radius: 3px;
   background-color: #ffffff3a;
   letter-spacing: 1px;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, background-color 0.5s ease;
   font-family: 'montserrat', sans-serif;
+  position: relative; /* Kontekst dla pseudo-elementów */
+  overflow: hidden; /* Ukrycie pseudo-elementów */
+  margin-top: 45%;
 }
 
-.carousel-item__details--title:hover {
+.carousel-item__details .carousel-item__details--title:hover {
   background-color: #13334d;
   transform: scale(1.1);
 }
+
+/* Pseudo-elementy dla krawędzi */
+.carousel-item__details .carousel-item__details--title::before,
+.carousel-item__details .carousel-item__details--title::after {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+/* Górna krawędź */
+.carousel-item__details .carousel-item__details--title::before {
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  transform: translateX(-50%);
+}
+
+/* Dolna krawędź */
+.carousel-item__details .carousel-item__details--title::after {
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  transform: translateX(-50%);
+}
+
+/* Lewa i prawa krawędź */
+.carousel-item__details .carousel-item__details--title span {
+  position: absolute;
+  width: 1px;
+  background-color: #fff;
+  height: 0;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* Lewa górna krawędź */
+.carousel-item__details .carousel-item__details--title span:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform-origin: top;
+}
+
+/* Lewa dolna krawędź */
+.carousel-item__details .carousel-item__details--title span:nth-child(2) {
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom;
+}
+
+/* Prawa górna krawędź */
+.carousel-item__details .carousel-item__details--title span:nth-child(3) {
+  top: 0;
+  right: 0;
+  transform-origin: top;
+}
+
+/* Prawa dolna krawędź */
+.carousel-item__details .carousel-item__details--title span:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom;
+}
+
+/* Animacja po najechaniu */
+.carousel-item__details .carousel-item__details--title:hover::before,
+.carousel-item__details .carousel-item__details--title:hover::after {
+  width: 100%;
+}
+
+.carousel-item__details .carousel-item__details--title:hover span:nth-child(1),
+.carousel-item__details .carousel-item__details--title:hover span:nth-child(2),
+.carousel-item__details .carousel-item__details--title:hover span:nth-child(3),
+.carousel-item__details .carousel-item__details--title:hover span:nth-child(4) {
+  height: 50%;
+  transition-delay: 0.3s; /* Opóźnienie animacji */
+}
+
 
 ::-webkit-scrollbar-track
 {
