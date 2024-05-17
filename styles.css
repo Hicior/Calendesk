@@ -269,13 +269,14 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-  color: #5f5f5f;
-  padding: 7px 30px;
+  color: #5f5f5f !important;
+  padding: 4px 30px;
   border: 1px solid #5f5f5f;
   text-transform: uppercase;
-  font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease; /* Dodajemy animację przejścia */
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .page-card__btn:hover {
@@ -742,5 +743,8 @@
   }
   .Right-Side-Image {
       width: 100px;
+  }
+  .HighlightV1 {
+      font-size: 22px;
   }
 }
