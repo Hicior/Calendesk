@@ -754,6 +754,6 @@
 
 @media (min-width: 1276px) {
   .Container-Image {
-      max-height: 500px;
+      min-height: 500px;
   }
 }
