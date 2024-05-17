@@ -9,6 +9,14 @@
   line-height: 1.5;
 }
 
+.titleV2 {
+  color: #505050;
+  font-family: 'Montserrat', Sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .SubtitleV1 {
   color: #505050;
   font-family: 'Montserrat', Sans-serif;
@@ -722,5 +730,17 @@
 @media (max-width: 768px) {
   .scroll-to-top {
       display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .titleV1 {
+      font-size: 22px;
+  }
+  .SubtitleV1 {
+      font-size: 20px;
+  }
+  .Right-Side-Image {
+      width: 100px;
   }
 }
