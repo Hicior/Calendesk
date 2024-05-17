@@ -751,3 +751,9 @@
       font-size: 22px !important;
   }
 }
+
+@media (min-width: 1276px) {
+  .Container-Image {
+      max-height: 500px;
+  }
+}
