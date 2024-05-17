@@ -92,7 +92,7 @@
 /* <style> */
 .Container-Overlay {
   position:inherit;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   bottom: 70px;
   background-color: white;
@@ -721,9 +721,12 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .overlay_title {
-      font-size: 28px;
+      font-size: 22px !important;
+  }
+  .overlay_subtitle {
+      font-size: 18px !important;
   }
 }
 
@@ -745,6 +748,6 @@
       width: 100px;
   }
   .HighlightV1 {
-      font-size: 22px;
+      font-size: 22px !important;
   }
 }
