@@ -82,7 +82,7 @@
 }
 
 .Image_for_container {
-  background-image: url('https://example.com/default-background.jpg');
+  background-image: url('https://hicior.github.io/Calendesk/images/ekipa-mentzen.png');
   width: 100%;
   object-fit: cover;
   object-position: center;
@@ -755,5 +755,11 @@
 @media (max-width: 450px) {
   .Container-Overlay {
       padding: 20px 0px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .Image_for_container {
+      background-image: url('https://hicior.github.io/Calendesk/images/ekipa-mentzenV2.png');
   }
 }
