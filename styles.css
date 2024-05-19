@@ -83,7 +83,6 @@
 
 .Image_for_container {
   width: 100%;
-  max-height: 350px;
   object-fit: cover;
   object-position: center;
 }
@@ -749,5 +748,11 @@
   }
   .HighlightV1 {
       font-size: 22px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .Container-Overlay {
+      padding: 20px 0px !important;
   }
 }
