@@ -82,11 +82,21 @@
 }
 
 .Image_for_container {
-  background-image: url('https://hicior.github.io/Calendesk/images/ekipa-mentzen.png');
+  max-height: 350px;
   width: 100%;
   object-fit: cover;
   object-position: center;
 }
+
+.Image_for_containerV2 {
+  background-image: url('images/ekipa-mentzenV2.png');
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+}
+
 /* </style> */
 
 /* <style> */
@@ -758,8 +768,33 @@
   }
 }
 
+/* ZDJECIE STRONA GŁÓWNA */
 @media (max-width: 768px) {
-  .Image_for_container {
-      background-image: url('https://hicior.github.io/Calendesk/images/ekipa-mentzenV2.png');
+  .Image_for_containerV2 {
+      background-image: url('images/ekipa-mentzenV3.png');
+  }
+}
+
+@media (max-width: 1170px) {
+  .Image_for_containerV2 {
+      min-height: 350px;
+  }
+}
+
+@media (max-width: 890px) {
+  .Image_for_containerV2 {
+      min-height: 300px;
+  }
+}
+
+@media (max-width: 550px) {
+  .Image_for_containerV2 {
+      min-height: 250px;
+  }
+}
+
+@media (max-width: 450px) {
+  .Image_for_containerV2 {
+      min-height: 200px;
   }
 }
