@@ -90,7 +90,7 @@
 }
 
 .Image_for_containerV2 {
-  background-image: url('images/ekipa-mentzenV2.png');
+  background-image: url('images/ekipa-mentzenV2.jpg');
   background-size: cover;
   background-position: top;
   width: 100%;
@@ -785,7 +785,7 @@
 /* ZDJECIE STRONA GŁÓWNA */
 @media (max-width: 768px) {
   .Image_for_containerV2 {
-      background-image: url('images/ekipa-mentzenV3.png');
+      background-image: url('images/ekipa-mentzenV3.jpg');
   }
 }
 
