@@ -702,7 +702,7 @@
 .close-button {
   position: absolute;
   right: 10px;
-  top: -5px;
+  top: -5px,;
   text-decoration: none;
   font-size: 28px;
   color: white !important;
