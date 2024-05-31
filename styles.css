@@ -668,6 +668,60 @@
   display: block;
 }
 
+.title-break {
+  height: 10px;
+}
+
+/* Dodatkowe style dla modalnych okienek */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #f9f8f6;
+  padding: 2px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 1400px;
+  width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+  font-size: 28px;
+  color: white;
+}
+
+#poradniki-podatkowe:target,
+#poradniki-prawne:target,
+#szkolenia:target,
+#newslettery:target {
+  display: flex;
+}
+
+.hidden-content {
+  display: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
 /* KONTENER 2 ZDJĘCIA */
 
 .image-left, .image-right
