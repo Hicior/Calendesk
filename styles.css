@@ -260,12 +260,35 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.K-page-card {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  transition: .5s;
+  height: 180px;
+  margin: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 .page-card:hover {
   transform: scale(1.03); 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.K-page-card:hover {
+  transform: scale(1.03); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 .page-card__img {
+  width: 30%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.K-page-card__img {
   width: 30%;
   background-size: cover;
   background-position: center;
@@ -278,7 +301,24 @@
   position: relative;
 }
 
+.K-page-card__content {
+  background-color: white;
+  width: 70%;
+  position: relative;
+}
+
 .page-card__header {
+  font-size: 26px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+  font-weight: 600;
+  color: #5f5f5f;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.K-page-card__header {
   font-size: 26px;
   margin-left: 20px;
   margin-right: 20px;
@@ -296,6 +336,17 @@
   color: #5f5f5f;
   text-align: left;
   margin-top: 10px;
+  line-height: 1.4;
+}
+
+.K-page-card__text {
+  font-size: 18px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #5f5f5f;
+  text-align: left;
+  margin-top: 10px;
+  line-height: 1.4;
 }
 
 .page-card__btn {
@@ -313,7 +364,27 @@
   letter-spacing: 0.3px;
 }
 
+.K-page-card__btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #5f5f5f !important;
+  padding: 4px 30px;
+  border: 1px solid #5f5f5f;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease; /* Dodajemy animację przejścia */
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
 .page-card__btn:hover {
+  transform: translateY(-3px); /* Lekkie podniesienie */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Zwiększony cień przy najechaniu */
+}
+
+.K-page-card__btn:hover {
   transform: translateY(-3px); /* Lekkie podniesienie */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Zwiększony cień przy najechaniu */
 }
@@ -875,5 +946,23 @@ body.modal-open {
 @media (max-width: 450px) {
   .Image_for_containerV2 {
       min-height: 200px;
+  }
+}
+
+/* KAFELKI - KSIEGOWOŚĆ */
+
+@media (max-width: 530px) {
+  .K-page-card__img {
+      width: 35%;
+  }
+  .K-page-card__content {
+      width: 65%;
+  }
+  .K-page-card__header {
+      font-size: 20px;
+  }
+  .K-page-card__text {
+      font-size: 14px;
+      margin-right: 15px;
   }
 }
