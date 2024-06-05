@@ -13,6 +13,42 @@
             font-family: 'Montserrat', Sans-serif;
             margin: 0;
             padding: 0;
+            overflow-y: scroll; /* Ensure the body has a scrollbar */
+        }
+        .audyty-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .audyty-modal:target {
+            display: block;
+        }
+        .audyty-modal-content {
+            background-color: #f9f8f6;
+            margin: 3% auto;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 900px;
+            height: calc(100% - 10%);
+            overflow-y: auto;
+        }
+        .audyty-close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .audyty-close-button:hover,
+        .audyty-close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
   </head>
@@ -26,12 +62,11 @@
     </div>
     <!-- KARTY -->
     <ul class="standard-card-list">
-	
         <li class="standard-card">
-            <a class="standard-card-image" href="https://form.jotform.com/240432559723356">
+            <a class="standard-card-image" href="#audyty-openModal1">
                 <img src="https://hicior.github.io/Calendesk/images/UA-Podatkowy.jpg" alt="Uproszczony Audyt Podatkowy" />
             </a>
-            <a class="standard-card-description" href="https://form.jotform.com/240432559723356" target="_blank">
+            <a class="standard-card-description" href="#audyty-openModal1">
                 <h2>Wypełnij ankietę</h2>
             </a>
         </li>
@@ -71,7 +106,16 @@
                 <h2>Wypełnij ankietę</h2>
             </a>
         </li>
-        
     </ul>
+
+    <!-- MODAL -->
+    <div id="audyty-openModal1" class="audyty-modal">
+        <div class="audyty-modal-content">
+            <a href="#" class="audyty-close-button">&times;</a>
+            <iframe id="JotFormIFrame-240992463664062" title="Ceny transferowe" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen" src="https://form.jotform.com/240992463664062" frameborder="0" style="min-width:100%;max-width:100%;height:100%;" scrolling="no" ></iframe> 
+            <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script> 
+            <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-240992463664062']", "https://form.jotform.com/")</script>
+        </div>
+    </div>
   </body>
 </html>

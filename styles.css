@@ -721,11 +721,12 @@
 
 .standard-card-description {
 	display: block;
-	padding: 0.5em 0.5em;
+	padding: 10px;
 	color: #515151 !important;
 	text-decoration: none;
 	position: relative; /* Dodane do umożliwienia pozycjonowania pseudoelementu */
 	cursor: pointer; /* Dodane, aby wskaźnik zmieniał się na kursor */
+  font-size: 14px;
 }
 
 .standard-card-description::after {
