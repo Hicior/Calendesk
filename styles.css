@@ -808,13 +808,14 @@ body.modal-open {
 .audyty-modal {
   display: none;
   position: fixed;
-  z-index: 1;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 .audyty-modal:target {
   display: flex;
