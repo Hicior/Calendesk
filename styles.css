@@ -817,23 +817,26 @@ body.modal-open {
   background-color: rgba(0,0,0,0.6);
 }
 .audyty-modal:target {
-  display: block;
+  display: flex;
 }
 .audyty-modal-content {
-  background-color: #f9f8f6;
-  margin: 3% auto;
-  border: 1px solid #888;
-  width: 80%;
+  background: #f9f8f6;
+  text-align: center;
   max-width: 900px;
-  height: calc(100% - 10%);
-  overflow-y: auto;
+  width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+  border: 1px solid #888;
 }
 .audyty-close-button {
   color: #aaa !important;
-  float: right;
   font-size: 28px;
   font-weight: bold;
   text-decoration: none;
+	position: absolute;
+	right: 10px;
+	top: -5px;
 }
 .audyty-close-button:hover,
 .audyty-close-button:focus {
