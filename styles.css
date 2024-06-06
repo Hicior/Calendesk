@@ -784,7 +784,7 @@
 .close-button {
   position: absolute;
   right: 10px;
-  top: -5px,;
+  top: -5px;
   text-decoration: none;
   font-size: 28px;
   color: white !important;
@@ -829,15 +829,15 @@ body.modal-open {
   overflow-y: auto;
 }
 .audyty-close-button {
-  color: #aaa;
+  color: #aaa !important;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  text-decoration: none;
 }
 .audyty-close-button:hover,
 .audyty-close-button:focus {
   color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
