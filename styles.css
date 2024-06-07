@@ -826,17 +826,16 @@ body.modal-open {
   max-width: 900px;
   width: 90%;
   max-height: 90%;
-  overflow: auto;
   position: relative;
   border: 1px solid #888;
 }
 .audyty-close-button {
-  color: #aaa !important;
+  color: #aaa;
   font-size: 28px;
   font-weight: bold;
   text-decoration: none;
 	position: absolute;
-	right: 10px;
+	right: 25px;
 	top: -5px;
 }
 .audyty-close-button:hover,
