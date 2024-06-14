@@ -54,7 +54,7 @@ body, html {
 }
 
 form {
-	min-width: 25rem;
+	min-width: 30rem;
 	
 	.title {
 		font-family: 'Pacifico', cursive;
@@ -68,6 +68,8 @@ form {
     border: none;
     box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
     margin-bottom: 12px;
+    height: 3.3rem;
+    padding: 0.5rem 3.5rem;
 		
     &.thick {
       height: 3.3rem;
@@ -127,4 +129,9 @@ form {
   box-shadow: 0 0.5em 0.5em -0.4em #ff923cba;
   background-size: 100% 100%;
   transform: translateY(-0.15em);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1rem;
 }
