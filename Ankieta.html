@@ -6,12 +6,15 @@
     <title>Contact Form</title>
 </head>
 <body>
-    <form action="https://formsubmit.co/w.kuczkowski@mentzen.pl" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
+    <h1>Contact Us</h1>
+    <form action="https://formspree.io/f/xpzvyyok" method="POST">
+        <label for="email">Your email:</label>
         <input type="email" id="email" name="email" required>
+        
+        <label for="message">Your message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <!-- Additional form fields can go here -->
         
         <button type="submit">Send</button>
     </form>
