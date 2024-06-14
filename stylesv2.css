@@ -55,6 +55,7 @@ body, html {
 
 form {
 	min-width: 30rem;
+    box-sizing: border-box;
 	
 	.title {
 		font-family: 'Pacifico', cursive;
