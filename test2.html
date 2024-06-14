@@ -8,13 +8,13 @@
     <!-- CSS -->
     <link href="styles.css" rel="stylesheet"/>
     <style>
-        body {
-            background-color: white;
-            font-family: 'Montserrat', Sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .Newsletter-container {
+.body {
+    background-color: white;
+    font-family: 'Montserrat', Sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.Newsletter-container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
@@ -48,42 +48,59 @@
     padding: 20px;
 }
 .Newsletter-content h2 {
-    color: #13334d;
+    color: #505050;
     font-size: 22px;
     text-align: left;
+    margin-top: 5px;
 }
 .Newsletter-content h3 {
-    color: #13334d;
-    font-size: 18px;
+    color: #505050;
+    font-size: 16px;
     text-align: left;
     margin-top: 20px;
+    margin-bottom: 0px;
 }
 .Newsletter-content p {
     line-height: 1.6;
     color: #333333;
     text-align: left;
     font-size: 14px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 .Newsletter-content ul {
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 20px;
+    font-family: 'Montserrat', Sans-serif;
+    font-size: 14px;
+    text-align: left;
+    color: #333333;
+}
+.Newsletter-content ul li {
+    margin-bottom: 5px;
 }
 .Newsletter-footer {
     padding: 20px;
     background-color: #f9f9f9;
     border-top: 1px solid #dcdcdc;
+}
+.Newsletter-person {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-bottom: 20px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.Newsletter-footer img {
+.Newsletter-person img {
     border-radius: 50%;
     width: 120px;
     height: 120px;
     margin-right: 20px;
+}
+.Newsletter-person-text {
+    text-align: left;
 }
 .Newsletter-footer p {
     margin: 0;
@@ -1251,13 +1268,13 @@
                     <p>
                         Co istotne, korzystanie z rozwiązania nie będzie powodowało w przyszłości obniżenia świadczeń z ubezpieczeń społecznych.
                     </p>
-                    <p>
+                    <p style="margin-bottom: 20px;">
                         Podczas wakacji przedsiębiorca może wciąż prowadzić firmę, nie musi przykładowo zawieszać prowadzonej przez siebie działalności.
                     </p>
                     <p>
                         Podsumowując, jeśli kwalifikujecie się Państwo do skorzystania z „wakacji”, to najzwyczajniej szkoda nie wykorzystać tej możliwości, bo nic na tym nie tracicie.
                     </p>
-                    <p>
+                    <p style="margin-bottom: 15px;">
                         Jeżeli po zapoznaniu się z tematyką pozostały pewne kwestie wymagające doprecyzowania pozostajemy do Państwa dyspozycji.
                     </p>
                     <p>
@@ -1265,15 +1282,19 @@
                     </p>
                 </div>
                 <div class="Newsletter-footer">
-                    <img src="https://hicior.github.io/Calendesk/images/Konrad-Tonkiewicz.png" alt="Konrad Tonkiewicz" />
-                    <div>
-                        <p class="Newsletter-name">Konrad Tonkiewicz</p>
-                        <p class="Newsletter-role">Doradca podatkowy<br>Numer wpisu: 14466</p>
+                    <div class="Newsletter-person">
+                        <img src="https://hicior.github.io/Calendesk/images/Konrad-Tonkiewicz_Newsletter.png" alt="Konrad Tonkiewicz" />
+                        <div class="Newsletter-person-text">
+                            <p class="Newsletter-name">Konrad Tonkiewicz</p>
+                            <p class="Newsletter-role">Doradca podatkowy<br>Numer wpisu: 14466</p>
+                        </div>
                     </div>
-                    <img src="https://hicior.github.io/Calendesk/images/Kacper-Adamowicz.png" alt="Kacper Adamowicz" />
-                    <div>
-                        <p class="Newsletter-name">Kacper Adamowicz</p>
-                        <p class="Newsletter-role">Asystent działu doradztwa podatkowego</p>
+                    <div class="Newsletter-person">
+                        <img src="https://hicior.github.io/Calendesk/images/Kacper-Adamowicz_Newsletter.png" alt="Kacper Adamowicz" />
+                        <div class="Newsletter-person-text">
+                            <p class="Newsletter-name">Kacper Adamowicz</p>
+                            <p class="Newsletter-role">Asystent działu doradztwa podatkowego</p>
+                        </div>
                     </div>
                 </div>
             </div>
