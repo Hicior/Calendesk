@@ -50,6 +50,7 @@ body, html {
       padding: .5rem 1.8rem;
       height: auto;
       min-height: 150px;
+      min-width: 300px;
     }
     
     ::placeholder {
