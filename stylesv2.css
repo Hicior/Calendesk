@@ -135,7 +135,7 @@ form {
 }
 
 .btn:hover:enabled {
-  box-shadow: 0 0.5em 0.5em -0.4em #13334da3;
+  box-shadow: 0 0.5em 0.5em -0.4em #13334dd1;
   background-size: 100% 100%;
   transform: translateY(-0.15em);
   cursor: pointer;
