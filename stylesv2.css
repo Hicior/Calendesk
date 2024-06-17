@@ -47,7 +47,7 @@ form {
       box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 		}
   }
-	
+
 	.message .form-control {
 		padding: 10px 25px;
     min-height: 120px;
@@ -115,4 +115,22 @@ form {
   height: 100%;
   width: 100%;
   padding: 40px 10px;
+}
+
+@media (max-width: 446px) {
+  form {
+      min-width: 390px;
+  }
+}
+
+@media (max-width: 420px) {
+  form {
+      min-width: 370px;
+  }
+}
+
+@media (max-width: 395px) {
+  form {
+      min-width: 350px;
+  }
 }
