@@ -354,7 +354,51 @@
                 <div class="text-center">
                     <button type="submit" class="btn" tabIndex="-1">WYŚLIJ</button>
                 </div>
-            </form>            
+        </form>            
+
+        </div>
+    </div>
+
+<!-- FORM BEZ SVG -->
+
+    <div class="Background-container">
+        <div class="Form-container">
+
+        <form action="https://formspree.io/f/xpzvvyok" method="post">
+                <h1 class="form-title">Formularz kontaktowy</h1>
+            
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="formName" class="d-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user icon">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </label>
+                    <input type="text" id="formName" name="name" class="form-control form-control-lg thick" placeholder="Imię i nazwisko" required>
+                </div>
+            
+                <!-- E-mail -->
+                <div class="form-group">
+                    <label for="formEmail" class="d-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail icon">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </label>
+                    <input type="email" id="formEmail" name="email" class="form-control form-control-lg thick" placeholder="E-mail" required>
+                </div>
+            
+                <!-- Message -->
+                <div class="form-group message">
+                    <textarea id="formMessage" name="message" class="form-control form-control-lg" rows="7" placeholder="Opisz swój problem." required></textarea>
+                </div>
+                
+                <!-- Submit btn -->
+                <div class="text-center">
+                    <button type="submit" class="btn" tabIndex="-1">WYŚLIJ</button>
+                </div>
+        </form>            
 
         </div>
     </div>
