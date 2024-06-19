@@ -4,6 +4,16 @@
     padding: 0;
 }
 
+.Contact-Container {
+    font-family: 'montserrat', sans-serif;
+    background: linear-gradient(135deg, #314C62, #4C82AD);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+
 .contact-container {
     display: flex;
     width: 90%;
