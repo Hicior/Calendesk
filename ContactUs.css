@@ -33,13 +33,13 @@
 }
 
 .contact-info h2 {
-    margin-top: 7px;
+    margin-top: 3px;
     margin-bottom: 7px;
     font-size: 30px;
 }
 
 .info-group {
-    margin-top: 47px;
+    margin-top: 45px;
 }
 
 .information p {
@@ -122,7 +122,7 @@ input::placeholder, textarea::placeholder {
     display: flex;
     position: relative;
     justify-content: left;
-    margin-top: 155px;
+    margin-top: 162px;
     padding-left: 0px;
 }
   ul li {
