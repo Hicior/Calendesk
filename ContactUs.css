@@ -4,17 +4,6 @@
     padding: 0;
 }
 
-body {
-    font-family: 'montserrat', sans-serif;
-    background: linear-gradient(135deg, #314C62, #4C82AD);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
 .contact-container {
     display: flex;
     width: 90%;
@@ -95,7 +84,7 @@ input::placeholder, textarea::placeholder {
     color: rgba(255, 255, 255, 0.8);
 }
 
-button {
+.form-button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -110,7 +99,7 @@ button {
     letter-spacing: 0.5px;
 }
 
-button:hover:enabled {
+.form-button:hover:enabled {
     box-shadow: 0 0.5em 0.5em -0.4em #13334dd1;
     background-size: 100% 100%;
     transform: translateY(-0.15em);
