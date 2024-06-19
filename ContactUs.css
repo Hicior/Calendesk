@@ -28,7 +28,7 @@
 .contact-info {
     padding: 30px;
     width: 100%;
-    height: 450px;
+    height: 500px;
     padding-left: 45px;
 }
 
@@ -42,17 +42,17 @@
     margin-top: 47px;
 }
 
-.info p {
+.information p {
     margin: 10px 0;
     font-size: 16px;
 }
 
-.info p {
+.information p {
     display: flex;
     align-items: center;
 }
 
-.info p i {
+.information p i {
     margin-right: 10px;
 }
 
