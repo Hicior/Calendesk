@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Section</title>
+    <link rel="stylesheet" href="https://hicior.github.io/Calendesk/ContactUs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Masz jakieś pytania?</h2>
+            <p style="font-size: 20px;">Napisz do nas!</p>
+            <div class="info-group">
+                <div class="info">
+                    <p><i class="fas fa-phone"></i> +48 563 000 363</p>
+                    <p><i class="fas fa-envelope"></i> sekretariat@mentzen.pl</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Grudziądzka 110-114/301
+                        87-100 Toruń</p>
+                </div>
+                <div class="social-media">
+                    <ul>
+                        <li><a href="https://www.facebook.com/kancelariamentzen" style="margin-left: 0px;"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.youtube.com/@kancelariamentzen"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/kancelaria-mentzen/"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/kancelariamentzen/?hl=pl"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form-card">
+            <div class="contact-form">
+                <h2>Formularz Kontaktowy</h2>
+                <form id="contactForm" action="https://formspree.io/f/xnqeeelg" method="post">               
+                    <input type="text" id="name" name="name" placeholder="Imię i nazwisko" required>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    <textarea id="message" name="message" placeholder="Opisz swój problem." required></textarea>
+                    <button type="submit">WYŚLIJ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome for icons -->
+    <script src="ContactUs.js"></script> <!-- Include your JavaScript file here -->
+</body>
+</html>
