@@ -9,6 +9,14 @@ body, html {
   width: 100%;
 }
 
+.Background-container {
+  background-color: #f9f8f6;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 10px;
+}
+
 .Form-container {
 	display: flex;
   justify-content: center;
@@ -25,6 +33,7 @@ form {
       text-align: center;
       font-weight: normal;
       margin-bottom: 15px;
+      margin-top: 0px;
 	}
 	
   .form-control {
@@ -105,16 +114,6 @@ form {
 
 .text-center {
   text-align: center;
-}
-
-.Background-container {
-  background-color: #f9f8f6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 40px 10px;
 }
 
 @media (max-width: 446px) {
