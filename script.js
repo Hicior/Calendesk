@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener("click", function (event) {
         if (event.target.classList.contains("next-btn")) {
-            navigateToCard(currentCard + 1);
+            if (validateCard(currentCard)) {
+                navigateToCard(currentCard + 1);
+            }
         } else if (event.target.classList.contains("prev-btn")) {
             navigateToCard(currentCard - 1);
         }
@@ -14,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         if (currentCard < cards.length - 1) {
             event.preventDefault();
-            navigateToCard(currentCard + 1);
+            if (validateCard(currentCard)) {
+                navigateToCard(currentCard + 1);
+            }
         } else {
             alert("Form submitted successfully!");
         }
@@ -26,6 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
             cards[cardIndex].classList.add("active");
             currentCard = cardIndex;
         }
+    }
+
+    function validateCard(cardIndex) {
+        const inputs = cards[cardIndex].querySelectorAll("input, textarea");
+        for (const input of inputs) {
+            if (!input.checkValidity()) {
+                alert("Please fill out all required fields.");
+                return false;
+            }
+        }
+        return true;
     }
 
     cards[currentCard].classList.add("active");
