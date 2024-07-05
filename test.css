@@ -91,7 +91,7 @@
   }
   
   .front, .back {
-    background: linear-gradient(to right, rgb(80, 90, 108), rgb(96, 119, 145));
+    background: linear-gradient(to right, rgb(20 30 48 / 90%), rgb(36 59 85 / 90%));
     position: absolute;
     width: 100%;
     height: 100%;
