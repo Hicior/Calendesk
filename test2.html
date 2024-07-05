@@ -3,150 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela PKD</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Mentzen+ Subskrypcje</title>
+    <link rel="stylesheet" href="test.css">
     <style>
-        .Newsletter-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border: 1px solid #dcdcdc;
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .Newsletter-header {
-            text-align: center;
-            background-color: #13334d;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f8f6;
             color: white;
-            padding: 20px;
         }
-        .Newsletter-logo {
-            background-color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .Newsletter-logo img {
-            max-width: 230px;
-            height: auto;
-        }
-        .Newsletter-header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .Newsletter-header .Newsletter-date {
-            margin: 5px 0 0;
-            font-size: 14px;
-        }
-        .Newsletter-content {
-            padding: 20px;
-        }
-        .Newsletter-content h2 {
-            color: #505050;
-            font-size: 22px;
-            text-align: left;
-            margin-top: 5px;
-        }
-        .Newsletter-content h3 {
-            color: #505050;
-            font-size: 16px;
-            text-align: left;
-            margin-top: 20px;
-            margin-bottom: 0px;
-        }
-        .Newsletter-content p {
-            line-height: 1.6;
-            color: #333333;
-            text-align: left;
-            font-size: 14px;
-            margin-top: 8px;
-            margin-bottom: 8px;
-        }
-        .Newsletter-content ul {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            font-family: 'Montserrat', Sans-serif;
-            font-size: 14px;
-            text-align: left;
-            color: #333333;
-        }
-        .Newsletter-content ul li {
-            margin-bottom: 5px;
-        }
-        .Newsletter-footer {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-top: 1px solid #dcdcdc;
-        }
-        .Newsletter-person {
-            display: flex;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
-            max-width: 350px;
-            margin-left: auto;
-            margin-right: auto;
+            z-index: 10;
         }
-        .Newsletter-person img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            margin-right: 20px;
+
+        .modal-content {
+            background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            font-family: 'roboto', sans-serif;
         }
-        .Newsletter-person-text {
-            text-align: left;
-        }
-        .Newsletter-footer p {
-            margin: 0;
-            color: #333333;
-            font-size: 14px;
-        }
-        .Newsletter-footer .Newsletter-name {
+
+        .modal-content h2 {
+            font-size: 28px;
             font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 5px;
         }
-        .Newsletter-footer .Newsletter-role {
-            color: #777777;
+
+        .modal-content h3 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .modal-content p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .modal-content .close {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .modal-content .option {
+            margin-bottom: 20px;
+            display: grid;
+            gap: 5px;
+            align-content: center;
+            justify-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        #modal1:checked ~ .modal1 {
+            display: flex;
+        }
+
+        #modal2:checked ~ .modal2 {
+            display: flex;
+        }
+
+        #modal3:checked ~ .modal3 {
+            display: flex;
         }
     </style>
 </head>
 <body>
-    <div class="Newsletter-container">
-        <div class="Newsletter-logo">
-            <img src="https://hicior.github.io/Calendesk/images/logo-Mentzen.png" alt="Logo" />
+    <div class="Heading-Container">
+        <h1>Wybierz pakiet dla siebie</h1>
+    </div>
+    <div class="Subscriptions-Container">
+        <div class="card">
+            <div class="content">
+                <div class="back">
+                    <div class="back-content">
+                        <h1>MENTZEN+</h1>
+                        <h2>PRAWO</h2>
+                        <h3>od 349 zł</h3>
+                        <h4>netto / mies.</h4>
+                    </div>
+                </div>
+                <div class="front">
+                    <div class="front-content">
+                        <ul>
+                            <li>Nielimitowane konsultacje prawne</li>
+                            <li>Comiesięczne audyty prawne</li>
+                            <li>Zakładanie spółek w s24</li>
+                            <li>Zmiany w s24</li>
+                            <li>Dostęp do bazy wiedzy, wzorów umów, uchwał, czy krótkich pism</li>
+                            <li>Webinary, szkolenia, newslettery</li>
+                            <li>Zniżki na usługi spoza pakietu</li>
+                            <li>Po roku nieprzerwanej współpracy darmowe 2h usług prawnych</li>
+                            <li>I wiele innych</li>
+                        </ul>
+                        <label for="modal1" class="nice-button">Wybieram pakiet</label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="Newsletter-header">
-            <h1>NEWSLETTER</h1>
-            <p class="Newsletter-date">03.07.2024 r.</p>
+        <div class="card">
+            <div class="content">
+                <div class="back">
+                    <div class="back-content">
+                        <h1>MENTZEN+</h1>
+                        <h2>PODATKI</h2>
+                        <h3>od 349 zł</h3>
+                        <h4>netto / mies.</h4>
+                    </div>
+                </div>
+                <div class="front">
+                    <div class="front-content">
+                        <ul>
+                            <li>Nielimitowane konsultacje podatkowe</li>
+                            <li>Analizę podatkową</li>
+                            <li>Uproszczony audyt księgowy</li>
+                            <li>Audyt VAT raz na kwartał</li>
+                            <li>Krótkie opinie podatkowe</li>
+                            <li>Wsparcie w kontrolach podatkowych PIT/CIT/VAT</li>
+                            <li>Wnioski o interpretacje podatkowe, WIS</li>
+                            <li>Dostęp do bazy wiedzy, wzorów dokumentów</li>
+                            <li>Webinary, szkolenia, newslettery</li>
+                            <li>Zniżki na usługi spoza pakietu</li>
+                            <li>I wiele innych</li>
+                        </ul>
+                        <label for="modal2" class="nice-button">Wybieram pakiet</label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="Newsletter-content">
-            <h2>WAKACJE SKŁADKOWE, CZYLI Z DUŻEJ CHMURY MAŁY DESZCZ</h2>
-            <p>Dzień dobry,</p>
-            <p>
-                dzięki ostatnim zmianom w przepisach przedsiębiorcy mogą wziąć wakacje od ZUS. Genezą wspomnianych regulacji jest ostatnia kampania parlamentarna. Podczas której różnej maści ugrupowania prześcigały się w ofercie dla przedsiębiorców. Część partii proponowała dobrowolny ZUS, a część jego obniżenie.
-            </p>
-            <p>W poniższym wideo znajdą Państwo kluczowe informacje na ten temat.</p>
-            <p>
-                <a href="https://www.youtube.com/watch?si=RO0K6Zg8lVbXFM1d&v=z9y8oVD0FI4&feature=youtu.be">
-                    <img src="https://hicior.github.io/Calendesk/images/YT1.png" alt="Link do wideo" style="max-width: 100%; height: auto;">
-                </a>
-            </p>
-            <p>
-                W razie pytań nasi specjaliści niezmiennie pozostają do Państwa dyspozycji.
-            </p>
-            <p>
-                Z wyrazami szacunku,
-            </p>
-            <div class="Newsletter-footer">
-                <div class="Newsletter-person">
-                    <img src="https://hicior.github.io/Calendesk/images/Bartosz-Przybysz_Newsletter.png" alt="Bartosz Przybysz" />
-                    <div class="Newsletter-person-text">
-                        <p class="Newsletter-name">Bartosz Przybysz</p>
-                        <p class="Newsletter-role">Doradca podatkowy<br>Numer wpisu: 14173</p>
+        <div class="card">
+            <div class="content">
+                <div class="back">
+                    <div class="back-content">
+                        <h1>MENTZEN+</h1>
+                        <h2>PRAWO I PODATKI</h2>
+                        <h3>od 499 zł</h3>
+                        <h4>netto / mies.</h4>
+                    </div>
+                </div>
+                <div class="front">
+                    <div class="front-content">
+                        <h5>Pakiet ten zawiera wszystko to, co mają w sobie subskrypcje Mentzen+ PRAWO i Mentzen+ PODATKI, czyli m.in.:</h5>
+                        <ul>
+                            <li>Nielimitowane konsultacje prawne i podatkowe</li>
+                            <li>Comiesięczne audyty prawne</li>
+                            <li>Analizę podatkową</li>
+                            <li>Zakładanie spółek w s24 i zmiany w s24</li>
+                            <li>Wnioski o interpretacje</li>
+                            <li>Dostęp do pełnej bazy wiedzy</li>
+                            <li>Zniżki na usługi spoza pakietów</li>
+                            <li>I wiele innych</li>
+                        </ul>
+                        <p>Dorzucamy też nie 2, a 4 godziny usług prawnych po roku nieprzerwanej współpracy!</p>
+                        <label for="modal3" class="nice-button">Wybieram pakiet</label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <input type="checkbox" id="modal1">
+    <div class="modal modal1">
+        <div class="modal-content">
+            <div class="option">
+                <h2>PAKIET STANDARD</h2>
+                <p>Wybierz, gdy osiągasz przychody do 1 mln złotych w skali roku.</p>
+                <h3>349 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/237" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <hr>
+            <div class="option">
+                <h2>PAKIET PREMIUM</h2>
+                <p>Wybierz, gdy osiągasz przychody do 10 mln złotych w skali roku.</p>
+                <h3>799 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/238" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <hr>
+            <div class="option">
+                <h2>PAKIET PRO</h2>
+                <p>Wybierz, gdy osiągasz przychody powyżej 10 mln złotych w skali roku.</p>
+                <h3>1699 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/239" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <label for="modal1" class="close">Zamknij</label>
+        </div>
+    </div>
+
+    <input type="checkbox" id="modal2">
+    <div class="modal modal2">
+        <div class="modal-content">
+            <div class="option">
+                <h2>PAKIET STANDARD</h2>
+                <p>Wybierz, gdy osiągasz przychody do 1 mln złotych w skali roku.</p>
+                <h3>349 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/233" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <hr>
+            <div class="option">
+                <h2>PAKIET PREMIUM</h2>
+                <p>Wybierz, gdy osiągasz przychody do 10 mln złotych w skali roku.</p>
+                <h3>799 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/234" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <hr>
+            <div class="option">
+                <h2>PAKIET PRO</h2>
+                <p>Wybierz, gdy osiągasz przychody powyżej 10 mln złotych w skali roku.</p>
+                <h3>1 699 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/235" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <label for="modal2" class="close">Zamknij</label>
+        </div>
+    </div>
+    
+    <input type="checkbox" id="modal3">
+    <div class="modal modal3">
+        <div class="modal-content">
+            <div class="option">
+                <h2>PAKIET STANDARD</h2>
+                <p>Wybierz, gdy osiągasz przychody do 1 mln złotych w skali roku.</p>
+                <h3>499 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/240" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <hr>
+            <div class="option">
+                <h2>PAKIET PREMIUM</h2>
+                <p>Wybierz, gdy osiągasz przychody do 10 mln złotych w skali roku.</p>
+                <h3>1199 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/241" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <hr>
+            <div class="option">
+                <h2>PAKIET PRO</h2>
+                <p>Wybierz, gdy osiągasz przychody powyżej 10 mln złotych w skali roku.</p>
+                <h3>2199 zł netto</h3>
+                <a href="https://mentzen-prawo-i-podatki.calendesk.net/subscription/242" target="_blank" class="nice-button">Wybieram pakiet</a>
+            </div>
+            <label for="modal3" class="close">Zamknij</label>
+        </div>
+    </div>
 </body>
 </html>
