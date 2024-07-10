@@ -754,3 +754,9 @@ input[type="checkbox"] {
     grid-template-columns: none;
   }
 }
+
+@media (max-width: 768px) {
+  .modal-content {
+    transform: scale(0.6);
+  }
+}
