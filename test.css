@@ -757,6 +757,9 @@ input[type="checkbox"] {
 
 @media (max-width: 768px) {
   .modal-content {
-    transform: scale(0.6);
+  }
+
+  .modal {
+    position: absolute;
   }
 }
