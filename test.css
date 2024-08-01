@@ -132,7 +132,6 @@ body {
 .Img_Shape_Right {
   position: absolute;
   right: 0;
-  top: 0;
   width: auto;
   height: auto;
   max-height: 480px;
@@ -141,9 +140,13 @@ body {
 
 .Tło_Mentzen {
   position: absolute;
-  width: 100%;
   height: 100%;
   z-index: 0;
+  opacity: 40%;
+  width: 100%;
+  right: 0;
+  object-fit: cover;
+  top: 0;
 }
 
 @keyframes pulse {
@@ -759,9 +762,5 @@ input[type="checkbox"] {
   .modal-content {
     transform: scale(0.6);
     left: -200px;
-  }
-
-  .modal {
-    position: fixed;
   }
 }
