@@ -899,6 +899,113 @@ body.modal-open {
     font-family: 'montserrat', sans-serif;
 }
 
+/*Newsletter*/
+
+.Newsletter-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+}
+.Newsletter-header {
+  text-align: center;
+  background-color: #13334d;
+  color: white;
+  padding: 20px;
+}
+.Newsletter-logo {
+  background-color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+}
+.Newsletter-logo img {
+  max-width: 230px;
+  height: auto;
+}
+.Newsletter-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+.Newsletter-header .Newsletter-date {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+.Newsletter-content {
+  padding: 20px;
+}
+.Newsletter-content h2 {
+  color: #505050;
+  font-size: 22px;
+  text-align: left;
+  margin-top: 5px;
+}
+.Newsletter-content h3 {
+  color: #505050;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+.Newsletter-content p {
+  line-height: 1.6;
+  color: #333333;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.Newsletter-content ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-family: 'Montserrat', Sans-serif;
+  font-size: 14px;
+  text-align: left;
+  color: #333333;
+}
+.Newsletter-content ul li {
+  margin-bottom: 5px;
+}
+.Newsletter-footer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #dcdcdc;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+}
+.Newsletter-person {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Newsletter-person img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+}
+.Newsletter-person-text {
+  text-align: left;
+}
+.Newsletter-footer p {
+  margin: 0;
+  color: #333333;
+  font-size: 14px;
+}
+.Newsletter-footer .Newsletter-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.Newsletter-footer .Newsletter-role {
+  color: #777777;
+}
+
 @media (min-width: 30em)
 {
 	.image-left img, .image-right img
