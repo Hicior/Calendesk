@@ -1,27 +1,25 @@
 Zamień tekst w moim starym kodzie na nowy, nie zmieniając przy tym styli.
 
 Nowy tekst:
-NEWSLETTER 04.09.2024 r.
+NEWSLETTER 11.09.2024 r.
 
-Jak wycenić udziały i akcje w umowie zbycia?
+Zmiany w IP BOX
  
 Dzień dobry,
 
 
-kwestie związane z wyceną udziałów i akcji w spółkach kapitałowych, są nieodłącznym elementem każdej umowy sprzedaży tych aktywów. W nagraniu omówiono, jakie metody wyceny są najczęściej stosowane, na co zwrócić uwagę, aby transakcja była bezpieczna, oraz dlaczego warto skorzystać z pomocy specjalistów.
+ulga IP BOX jest wykorzystywana głównie przez małych i średnich przedsiębiorców z branży IT. Pozwala ona na stosowania 5% podatku zamiast standardowej stawki na skali podatkowej czy podatku liniowym. Rząd planuje jednak zmiany w zakresie tej ulgi, które mogą spowodować, znaczące ograniczenie osób uprawnionych do jej zastosowania. Wprowadzenie limitu zatrudnienia może uniemożliwić korzystanie z niej wielu przedsiębiorcom.
 
-Serdecznie zapraszamy do zapoznania się z poniższym nagraniem.
-
-<Grafika z url: https://www.youtube.com/watch?si=fGZddKZf0IrWFe9Q&v=rgOL2amRxOc&feature=youtu.be>
+W poniższym wideo znajdą Państwo kluczowe informacje na ten temat.
+<grafika, https://www.youtube.com/watch?si=qKAIiW2jYyL--Ivm&v=LB4yz_W2xgg&feature=youtu.be>
 
 W razie pytań nasi specjaliści niezmiennie pozostają do Państwa dyspozycji.
 
+
 Z wyrazami szacunku
-Iga  Gawinecka  
-Radca prawny (TR-1582)
- 
-Natalia  Filipska  
-Aplikant radcowski
+
+Wiktor Nadolski
+Doradca podatkowy (14363)
 
 Current code:
     <div class="Newsletter-container">
