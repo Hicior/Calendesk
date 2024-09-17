@@ -529,35 +529,5 @@
     </script>
     <noscript><a href="https://www.livechat.com/chat-with/17370435/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
     <!-- End of LiveChat code -->
-    <script>
-        window.addEventListener('load', function () {
-        // Interval to check if the LiveChat widget container has loaded
-        const interval = setInterval(function() {
-            const chatWidgetContainer = document.querySelector('#chat-widget-container');
-
-            if (chatWidgetContainer) {
-            // Create the FAQ button
-            const faqButton = document.createElement('button');
-            faqButton.textContent = 'View FAQ';
-            faqButton.style.padding = '10px';
-            faqButton.style.margin = '10px';
-            faqButton.style.backgroundColor = '#f2f2f2';
-            faqButton.style.border = 'none';
-            faqButton.style.cursor = 'pointer';
-
-            // Add click event to open FAQ in a new tab
-            faqButton.addEventListener('click', function() {
-                window.open('https://your-faq-page.com', '_blank');
-            });
-
-            // Append the FAQ button to the chat widget container
-            chatWidgetContainer.appendChild(faqButton);
-
-            // Stop the interval once the FAQ button is added
-            clearInterval(interval);
-            }
-        }, 500); // Check every 500ms for the widget's presence
-        });
-    </script>
 </body>
 </html>
