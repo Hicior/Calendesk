@@ -533,41 +533,27 @@
         window.addEventListener('load', function () {
         // Interval to check if the LiveChat widget container has loaded
         const interval = setInterval(function() {
-            const chatWidgetContainer = document.querySelector('#chat-widget-container'); // The container of the LiveChat widget
+            const chatWidgetContainer = document.querySelector('#chat-widget-container');
 
             if (chatWidgetContainer) {
-            // Create the FAQ section and insert it outside the iframe but inside the widget container
-            const faqSection = document.createElement('div');
-            faqSection.innerHTML = `
-                <div class="faq-section">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-item">
-                    <button class="faq-question">What is the return policy?</button>
-                    <div class="faq-answer">
-                    <p>You can return any item within 30 days of purchase.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Do you offer international shipping?</button>
-                    <div class="faq-answer">
-                    <p>Yes, we offer international shipping to most countries.</p>
-                    </div>
-                </div>
-                </div>
-            `;
+            // Create the FAQ button
+            const faqButton = document.createElement('button');
+            faqButton.textContent = 'View FAQ';
+            faqButton.style.padding = '10px';
+            faqButton.style.margin = '10px';
+            faqButton.style.backgroundColor = '#f2f2f2';
+            faqButton.style.border = 'none';
+            faqButton.style.cursor = 'pointer';
 
-            // Append the FAQ section to the chat widget container
-            chatWidgetContainer.appendChild(faqSection);
-
-            // Add functionality to toggle FAQ answers
-            document.querySelectorAll('.faq-question').forEach(button => {
-                button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-                });
+            // Add click event to open FAQ in a new tab
+            faqButton.addEventListener('click', function() {
+                window.open('https://your-faq-page.com', '_blank');
             });
 
-            // Stop the interval once the FAQ is injected
+            // Append the FAQ button to the chat widget container
+            chatWidgetContainer.appendChild(faqButton);
+
+            // Stop the interval once the FAQ button is added
             clearInterval(interval);
             }
         }, 500); // Check every 500ms for the widget's presence
