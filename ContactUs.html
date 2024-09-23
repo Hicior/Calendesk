@@ -7,8 +7,173 @@
     <link rel="stylesheet" href="ContactUs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+<style>
+.Container {
+    background: linear-gradient(135deg, #314C62, #4C82AD);
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+#countdown {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.17);
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 80vw;
+    max-width: 1100px;
+    position: relative;
+}
+
+#countdown h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+#countdown h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+#countdown p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-section {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.time-section span {
+    display: block;
+    font-size: 60px;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+.time-section .label {
+    font-size: 18px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.separator {
+    font-size: 60px;
+    line-height: 1;
+    animation: blink 1s infinite;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: linear-gradient(131deg, #13334d, #375a7f, #6c8ebf, #13334d);
+    background-size: 300% 100%;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    font-family: roboto;
+}
+
+.btn:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em #13334dd1;
+    background-size: 100% 100%;
+    transform: translateY(-0.15em);
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    bottom: 10px;
+    right: 120px;
+    width: 100px; /* Szerokość logo */
+    height: auto;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@media (max-width: 500px) {
+    #timer {
+        flex-wrap: wrap;
+    }
+    .time-section {
+        width: 50%;
+        margin: 0;
+        text-align: center;
+    }
+    .separator {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+    #countdown {
+        width: 90vw;
+}
+}
+
+@media (max-width: 850px) {
+    .logo {
+        display: none;
+}
+}
+</style>
 <body>
-    <div class="Contact-Container">
+    <div class="Container">
+        <div id="countdown">
+            <h1>Nie przegap zbliżającego się webinaru</h1>
+            <h2>Rodzaje ubezpieczeń OC i niezdolności do pracy dla samozatrudnionych specjalistów IT</h2>
+            <p>Do webinaru pozostało:</p>
+            <div id="timer">
+                <div class="time-section">
+                    <span id="days">00</span>
+                    <div class="label">Dni</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-section">
+                    <span id="hours">00</span>
+                    <div class="label">Godzin</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-section">
+                    <span id="minutes">00</span>
+                    <div class="label">Minut</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-section">
+                    <span id="seconds">00</span>
+                    <div class="label">Sekund</div>
+                </div>
+            </div>
+            <a href="LINK_DO_REJESTRACJI" class="btn" target="_blank">Zobacz webinar</a>
+            <div class="logo">
+                <img style="width:200px" src="images/logo_poziom.svg" alt="Logo">
+            </div>
+        </div>
+    </div>    
+    <div class="Contact-Container"> 
         <div class="contact-container">
             <div class="contact-info">
                 <h2>Jak możemy Ci pomóc?</h2>
@@ -45,5 +210,43 @@
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome for icons -->
     <script src="ContactUs.js"></script> <!-- Include your JavaScript file here -->
+    <script>
+        // Ustaw datę i godzinę webinaru
+        var webinarDate = new Date('2024-09-25T18:00:00');
+
+        function updateCountdown() {
+            var now = new Date();
+            var timeRemaining = webinarDate - now;
+
+            if (timeRemaining > 0) {
+                var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                var hours = Math.floor(
+                    (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                var minutes = Math.floor(
+                    (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                // Dodaj zero przed jednocyfrowymi liczbami
+                days = days < 10 ? '0' + days : days;
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                document.getElementById('days').innerHTML = days;
+                document.getElementById('hours').innerHTML = hours;
+                document.getElementById('minutes').innerHTML = minutes;
+                document.getElementById('seconds').innerHTML = seconds;
+            } else {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML =
+                    '<p>Webinar się rozpoczął!</p>';
+            }
+        }
+
+        // Aktualizuj odliczanie co sekundę
+        var countdownInterval = setInterval(updateCountdown, 1000);
+    </script>        
 </body>
 </html>
