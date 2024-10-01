@@ -4,298 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ankieta - Rozpoczęcie Współpracy</title>
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Montserrat', Helvetica, Arial, Lucida, sans-serif;
-            color: #585858;
-            background: linear-gradient(to bottom, #f9f9f9, #eeeeee);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        form {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 400px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
-        }
-
-        .card-active {
-            opacity: 1;
-            visibility: visible;
-            position: relative;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .card:not(.card-active) {
-            pointer-events: none;
-        }
-
-        .card h1 {
-            margin-top: 0;
-            font-weight: 700;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .card h2 {
-            font-weight: 500;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .card p {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .card label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-size: 17px;
-        }
-
-        .card input[type="text"],
-        .card input[type="email"],
-        .card input[type="tel"],
-        .card input[type="number"],
-        .card select,
-        .card textarea {
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            min-height: 30px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .card textarea {
-            resize: vertical;
-            height: 100px;
-        }
-
-        .card .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .card .radio-group input[type="radio"] {
-            display: none;
-        }
-
-        .card .radio-group label {
-            position: relative;
-            padding-left: 32px;
-            cursor: pointer;
-            font-size: 15px;
-            user-select: none;
-            font-weight: 500;
-        }
-
-        .card .radio-group label::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: -1px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid #ccc;
-            background-color: #fff;
-            transition: border-color 0.3s ease;
-        }
-
-        .card .radio-group input[type="radio"]:checked + label::before {
-            border-color: #f59d24;
-        }
-
-        .card .radio-group label::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 4px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background-color: #f59d24;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .card .radio-group input[type="radio"]:checked + label::after {
-            opacity: 1;
-        }
-
-        .card .radio-group label:hover::before {
-            border-color: #f59d24;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-family: 'Montserrat', Helvetica, Arial, Lucida, sans-serif;
-        }
-
-        .first-card-buttons {
-            justify-content: center;
-            margin-top: 35px;
-        }
-
-        .submit-card-buttons {
-            background: rgb(85 130 85) !important
-        }
-
-        .button-group button {
-            background: #f59d24;
-            color: #fff;
-            border: none;
-            padding: 13px 26px;
-            border-radius: 50px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .button-group button:hover {
-            transform: scaleX(1.03) scaleY(1.03);
-        }
-
-        a {
-            color: #f59d24;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Styles for Package Descriptions */
-        .package-description {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .package-description h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #f59d24;
-            font-weight: 700;
-        }
-
-        .package-description ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .package-description ul li {
-            margin-bottom: 5px;
-        }
-
-        .package-description p {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .package-description strong {
-            font-weight: 700;
-            color: #333;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px auto;
-                padding: 0 10px;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            .card input[type="text"],
-            .card input[type="email"],
-            .card input[type="tel"],
-            .card input[type="number"],
-            .card select,
-            .card textarea {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .card .radio-group {
-                gap: 10px;
-            }
-
-            .card .radio-group label {
-                font-size: 14px;
-                padding-left: 25px;
-            }
-
-            .card .radio-group label::before {
-                width: 12px;
-                height: 12px;
-                top: 2px;
-            }
-
-            .card .radio-group label::after {
-                width: 6px;
-                height: 6px;
-                left: 3px;
-                top: 5px;
-            }
-
-            .button-group {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .button-group button {
-                width: 100%;
-                padding: 12px;
-                font-size: 16px;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="FORM_PRIME.css">
 </head>
 <body>
     <div class="container">
-        <form action="https://formspree.io/f/mqazvjvp" method="POST" id="surveyForm">
+        <form id="surveyForm">
             <!-- Card 1: Intro Text -->
             <div class="card card-active" id="card-1">
                 <h1>Sprawdź, który pakiet jest skrojony dla Ciebie</h1>
@@ -438,9 +151,9 @@
                 </div>
             </div>
 
-            <!-- Card 11: Czy Państwa firma posiada pracowników/zleceniobiorców/członków zarządu? -->
+            <!-- Card 11: Czy Państwa firma posiada pracowników? -->
             <div class="card" id="card-11">
-                <label>Czy Państwa firma posiada pracowników/zleceniobiorców/członków zarządu?</label>
+                <label>Czy Państwa firma posiada pracowników/zleceniobiorców?</label>
                 <div class="radio-group">
                     <input type="radio" id="employeesYes" name="Posiada pracowników" value="TAK">
                     <label for="employeesYes">TAK</label>
@@ -454,21 +167,12 @@
                 </div>
             </div>
 
-            <!-- Card 12: Ilu Państwa firma posiada pracowników/zleceniobiorców/członków zarządu? -->
+            <!-- Card 12: Liczba pracowników i osób zatrudnionych na umowy cywilnoprawne -->
             <div class="card" id="card-12">
-                <label for="employeeCount">Ilu Państwa firma posiada pracowników/zleceniobiorców/członków zarządu?</label>
-                <select id="employeeCount" name="Liczba pracowników">
-                    <option value="">-- Wybierz opcję --</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3-4">3-4</option>
-                    <option value="5-6">5-6</option>
-                    <option value="7-8">7-8</option>
-                    <option value="9-10">9-10</option>
-                    <option value="11-20">11-20</option>
-                    <option value="21-30">21-30</option>
-                    <option value=">30">>30</option>
-                </select>
+                <label for="employeeCount">Ilu Państwa firma posiada pracowników?</label>
+                <input type="number" id="employeeCount" name="Liczba pracowników" min="1" step="1">
+                <label style="margin-top: 20px;" for="civilContractCount">Proszę podać liczbę osób zatrudnionych na umowy cywilnoprawne:</label>
+                <input type="number" id="civilContractCount" name="Zatrudnieni na umowy cywilnoprawne" min="1" step="1">
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
@@ -476,14 +180,23 @@
                 </div>
             </div>
 
-            <!-- Card 13: Czy są Państwo zainteresowani obsługą kadrowo-płacową? -->
+            <!-- Card 13: Pakiety kadrowe oraz płacowe -->
             <div class="card" id="card-13">
-                <label>Czy są Państwo zainteresowani obsługą kadrowo-płacową?</label>
+
+                <!-- Heading and Packages Container -->
+                <h3>Jeśli są Państwo zainteresowani obsługą płacową lub kadrowo-płacową, proponujemy następujące pakiety:</h3>
+                <div id="packagesContainer"></div>
+
+                <label style="margin-top: 30px;">Proszę wybrać jedną z poniższych opcji:</label>
                 <div class="radio-group">
-                    <input type="radio" id="hrYes" name="Obsługa kadrowo-płacowa" value="TAK">
-                    <label for="hrYes">TAK</label>
-                    <input type="radio" id="hrNo" name="Obsługa kadrowo-płacowa" value="NIE">
-                    <label for="hrNo">NIE</label>
+                    <input type="radio" id="hrAndPayroll" name="Obsługa kadrowo-płacowa" value="Kadry i płace">
+                    <label for="hrAndPayroll">Jestem zainteresowany/a pakietem kadrowo-płacowym</label>
+
+                    <input type="radio" id="payrollOnly" name="Obsługa kadrowo-płacowa" value="Płace">
+                    <label for="payrollOnly">Jestem zainteresowany/a tylko pakietem płacowym</label>
+
+                    <input type="radio" id="notInterested" name="Obsługa kadrowo-płacowa" value="Brak zainteresowania">
+                    <label for="notInterested">Nie jestem zainteresowany/a prowadzeniem kadr</label>
                 </div>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
@@ -555,231 +268,7 @@
 
         </form>
     </div>
-
-    <script>
-        let currentCard = 1;
-        let cardOrder = [1,2,3,4,5,6,7,8,9,10,11,16]; // Removed cards 14 and 15 from default order
-    
-        let pkListenerAttached = false;
-        let kpListenerAttached = false;
-    
-        document.addEventListener('DOMContentLoaded', function() {
-            showCard(currentCard);
-    
-            // Event listeners for conditional logic
-            const employeesYes = document.getElementById('employeesYes');
-            const employeesNo = document.getElementById('employeesNo');
-    
-            if (employeesYes) {
-                employeesYes.addEventListener('change', function() {
-                    if (this.checked) {
-                        addConditionalCards();
-                    }
-                });
-            }
-    
-            if (employeesNo) {
-                employeesNo.addEventListener('change', function() {
-                    if (this.checked) {
-                        removeConditionalCards();
-                    }
-                });
-            }
-        });
-    
-        function showCard(n) {
-            // Get all cards
-            let cards = document.querySelectorAll('.card');
-    
-            // Remove 'card-active' class from all cards
-            cards.forEach(function(card) {
-                card.classList.remove('card-active');
-            });
-    
-            // Add 'card-active' class to the current card
-            let currentCardId = 'card-' + cardOrder[n - 1];
-            let currentCardElement = document.getElementById(currentCardId);
-            if (currentCardElement) {
-                currentCardElement.classList.add('card-active');
-    
-                // Attach event listeners if current card is 14 and listener not yet attached
-                if (currentCardId === 'card-14' && !pkListenerAttached) {
-                    const documentsPKSelect = document.getElementById('documents_PK');
-    
-                    if (documentsPKSelect) {
-                        documentsPKSelect.addEventListener('change', function() {
-                            updateDescriptionPK(this.value);
-                        });
-                        pkListenerAttached = true; // Prevent multiple attachments
-                    }
-                }
-    
-                // Attach event listeners if current card is 15 and listener not yet attached
-                if (currentCardId === 'card-15' && !kpListenerAttached) {
-                    const documentsKPIRSelect = document.getElementById('documents_KPIR_RyczaltzVAT');
-    
-                    if (documentsKPIRSelect) {
-                        documentsKPIRSelect.addEventListener('change', function() {
-                            updateDescriptionKPIR(this.value);
-                        });
-                        kpListenerAttached = true; // Prevent multiple attachments
-                    }
-                }
-            }
-        }
-    
-        function nextPrev(n) {
-            // If moving forward from Card 3, adjust cardOrder based on selection
-            if (currentCard === cardOrder.indexOf(3) + 1 && n === 1) {
-                adjustCardsAfterAccountingType();
-            }
-            // If moving backward to Card 3, remove Cards 14 and 15 and reset listeners
-            if (currentCard === cardOrder.indexOf(4) + 1 && n === -1) {
-                cardOrder = cardOrder.filter(card => card !== 14 && card !== 15);
-                pkListenerAttached = false;
-                kpListenerAttached = false;
-            }
-    
-            currentCard += n;
-    
-            // Prevent going beyond the first and last cards
-            if (currentCard < 1) {
-                currentCard = 1;
-            } else if (currentCard > cardOrder.length) {
-                currentCard = cardOrder.length;
-            }
-    
-            showCard(currentCard);
-        }
-    
-        function adjustCardsAfterAccountingType() {
-            // Remove Cards 14 and 15 from cardOrder if they exist
-            cardOrder = cardOrder.filter(card => card !== 14 && card !== 15);
-    
-            // Get the selected accounting type
-            const accountingType = document.querySelector('input[name="Forma księgowości"]:checked')?.value;
-    
-            // Determine which card to add based on the selection
-            let index = cardOrder.indexOf(3) + 1; // Position after Card 3
-    
-            if (accountingType === 'Pełna księgowość') {
-                cardOrder.splice(index, 0, 14); // Insert Card 14 after Card 3
-            } else if (accountingType === 'KPiR lub Ryczałt od przychodów ewidencjonowanych z VAT') {
-                cardOrder.splice(index, 0, 15); // Insert Card 15 after Card 3
-            }
-            // For the last option, no action is needed
-        }
-    
-        function addConditionalCards() {
-            if (!cardOrder.includes(12)) {
-                const index = cardOrder.indexOf(11) + 1; // Adjusted index after card 11
-                cardOrder.splice(index, 0, 12, 13); // Add cards 12 and 13
-            }
-        }
-    
-        function removeConditionalCards() {
-            cardOrder = cardOrder.filter(card => card !== 12 && card !== 13);
-            if (currentCard > cardOrder.length) {
-                currentCard = cardOrder.length;
-            }
-            showCard(currentCard);
-        }
-    
-        // Package Data for Card 14
-        const pkPackages = {
-            'do 20 dokumentów': { numberOfDocuments: '20', price: '1200 zł netto' },
-            '21 - 40 dokumentów': { numberOfDocuments: '40', price: '1500 zł netto' },
-            '41 - 60 dokumentów': { numberOfDocuments: '60', price: '1800 zł netto' },
-            '61 - 80 dokumentów': { numberOfDocuments: '80', price: '2000 zł netto' },
-            '81 - 100 dokumentów': { numberOfDocuments: '100', price: '2200 zł netto' },
-            '101 - 120 dokumentów': { numberOfDocuments: '120', price: '2400 zł netto' },
-            '121 - 140 dokumentów': { numberOfDocuments: '140', price: '2600 zł netto' },
-        };
-    
-        // Function to Update Description on Card 14
-        function updateDescriptionPK(selectedValue) {
-            let descriptionText = '';
-            const descriptionPK = document.getElementById('description_PK');
-            if (selectedValue && pkPackages[selectedValue]) {
-                let packageInfo = pkPackages[selectedValue];
-                let numberOfDocuments = packageInfo.numberOfDocuments;
-                let packagePrice = packageInfo.price;
-    
-                descriptionText = `
-                    <h3>Szeroki Mentzen ${numberOfDocuments}</h3>
-                    <ul>
-                        <li>prowadzenie księgowości w formie Ksiąg Rachunkowych,</li>
-                        <li>pakiet dotyczy max. ${numberOfDocuments} dokumentów miesięcznie,</li>
-                        <li>nielimitowane konsultacje podatkowe,</li>
-                        <li>automatyczne płatności,</li>
-                        <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
-                        <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
-                        <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
-                        <li>dostęp do szablonów umów,</li>
-                        <li>wsparcie w kontrolach podatkowych,</li>
-                        <li>newsletter podatkowy,</li>
-                        <li>dostęp do webinarów.</li>
-                    </ul>
-                    <p><strong>Pakiet miesięczny</strong></p>
-                    <p><strong>${packagePrice}</strong></p>
-                `;
-            }
-    
-            if (descriptionPK) {
-                descriptionPK.innerHTML = descriptionText;
-            }
-        }
-    
-        // Package Data for Card 15
-        const kpPackages = {
-            'do 10 dokumentów': { numberOfDocuments: '10', price: '350 zł netto' },
-            '11-30 dokumentów': { numberOfDocuments: '30', price: '440 zł netto' },
-            '31-50 dokumentów': { numberOfDocuments: '50', price: '530 zł netto' },
-            '51-70 dokumentów': { numberOfDocuments: '70', price: '620 zł netto' },
-            '71-90 dokumentów': { numberOfDocuments: '90', price: '730 zł netto' },
-            '91-110 dokumentów': { numberOfDocuments: '110', price: '840 zł netto' },
-            '111-130 dokumentów': { numberOfDocuments: '130', price: '950 zł netto' },
-            '131-150 dokumentów': { numberOfDocuments: '150', price: '1060 zł netto' },
-            '151-170 dokumentów': { numberOfDocuments: '170', price: '1170 zł netto' },
-            '171-190 dokumentów': { numberOfDocuments: '190', price: '1280 zł netto' },
-            '191-210 dokumentów': { numberOfDocuments: '210', price: '1390 zł netto' },
-            '211-230 dokumentów': { numberOfDocuments: '230', price: '1500 zł netto' },
-            '231-250 dokumentów': { numberOfDocuments: '250', price: '1610 zł netto' },
-        };
-    
-        // Function to Update Description on Card 15
-        function updateDescriptionKPIR(selectedValue) {
-            let descriptionText = '';
-            const descriptionKPIR = document.getElementById('description_KPIR');
-            if (selectedValue && kpPackages[selectedValue]) {
-                let packageInfo = kpPackages[selectedValue];
-                let numberOfDocuments = packageInfo.numberOfDocuments;
-                let packagePrice = packageInfo.price;
-    
-                descriptionText = `
-                    <h3>Uproszczony Mentzen ${numberOfDocuments}</h3>
-                    <ul>
-                        <li>prowadzenie księgowości w formie Księgi Przychodów i Rozchodów lub dla Ryczałtu z VATem,</li>
-                        <li>pakiet dotyczy max. ${numberOfDocuments} dokumentów miesięcznie,</li>
-                        <li>nielimitowane konsultacje podatkowe,</li>
-                        <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
-                        <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
-                        <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
-                        <li>dostęp do szablonów umów,</li>
-                        <li>wsparcie w kontrolach podatkowych,</li>
-                        <li>newsletter podatkowy,</li>
-                        <li>dostęp do webinarów.</li>
-                    </ul>
-                    <p><strong>Pakiet miesięczny</strong></p>
-                    <p><strong>${packagePrice}</strong></p>
-                `;
-            }
-    
-            if (descriptionKPIR) {
-                descriptionKPIR.innerHTML = descriptionText;
-            }
-        }
-    </script>        
-    
+      
+    <script src="FORM_PRIME.js"></script>
 </body>
 </html>
