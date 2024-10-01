@@ -58,6 +58,8 @@
                     <input type="radio" id="ryczaltNoVat" name="Forma księgowości" value="Ryczałt od przychodów ewidencjonowanych bez VAT">
                     <label for="ryczaltNoVat">Ryczałt od przychodów ewidencjonowanych bez VAT</label>
                 </div>
+                <!-- Miejsce na opis pakietu Mentzen bez VAT -->
+                <div id="description_MentzenBezVat" class="package-description"></div>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
@@ -173,6 +175,7 @@
                 <input type="number" id="employeeCount" name="Liczba pracowników" min="1" step="1">
                 <label style="margin-top: 20px;" for="civilContractCount">Proszę podać liczbę osób zatrudnionych na umowy cywilnoprawne:</label>
                 <input type="number" id="civilContractCount" name="Zatrudnieni na umowy cywilnoprawne" min="1" step="1">
+
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
@@ -262,7 +265,7 @@
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
-                    <button type="submit" class="submit-card-buttons">Wyślij</button>
+                    <button type="submit" class="submit-card-buttons">Zatwierdź i zobacz oferowane pakiety</button>
                 </div>
             </div>
 

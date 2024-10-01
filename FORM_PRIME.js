@@ -8,6 +8,7 @@ let kpListenerAttached = false;
 let userSelections = {
   accountingPackage: null,
   hrPackage: null,
+  accountingTypeSelection: null,
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -65,78 +66,144 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         // Handle form submission error
         form.innerHTML =
-          '<div class="submission-message">Wystąpił problem z przesłaniem formularza. Prosimy spróbować ponownie później.</div>';
+          '<div class="submission-message">Wystąpił problem z przesłaniem formularza. Prosimy spróbować ponownie później lub zgłosić błąd przesyłając wiadomość na czacie w prawym dolnym rogu.</div>';
         console.error(error);
       });
   });
 });
 
 function showCard(n) {
-  // Get all cards
+  // Retrieve all the form cards
   let cards = document.querySelectorAll(".card");
 
-  // Remove 'card-active' class from all cards
+  // Remove 'card-active' class from all cards to ensure only the current card is visible
   cards.forEach(function (card) {
     card.classList.remove("card-active");
   });
 
-  // Add 'card-active' class to the current card
+  // Identify the current card based on the index provided and make it active
   let currentCardId = "card-" + cardOrder[n - 1];
   let currentCardElement = document.getElementById(currentCardId);
   if (currentCardElement) {
     currentCardElement.classList.add("card-active");
 
-    // Attach event listeners if current card is 14 and listener not yet attached
+    // If the user is on Card 3, handle the accounting selection and show the relevant description
+    if (currentCardId === "card-3") {
+      const accountingOptions = document.getElementsByName("Forma księgowości");
+
+      // Update the selection for accounting type based on user input
+      const selectedOption = document.querySelector(
+        'input[name="Forma księgowości"]:checked'
+      );
+      if (selectedOption) {
+        userSelections.accountingTypeSelection = selectedOption.value;
+      }
+
+      // Display or hide the relevant package description based on the selected accounting type
+      updateMentzenBezVatDescription();
+
+      // Add event listeners to accounting options to update selection when the user makes a choice
+      accountingOptions.forEach((option) => {
+        option.addEventListener("change", function () {
+          userSelections.accountingTypeSelection = this.value;
+          updateMentzenBezVatDescription(); // Update the description based on the new selection
+        });
+      });
+    }
+
+    // Attach event listeners to Card 14 if it hasn't been done yet, to handle document selection
     if (currentCardId === "card-14" && !pkListenerAttached) {
       const documentsPKSelect = document.getElementById("documents_PK");
 
       if (documentsPKSelect) {
+        // Update the package description when the document count changes
         documentsPKSelect.addEventListener("change", function () {
           updateDescriptionPK(this.value);
-          // Store the selected accounting package
           userSelections.accountingPackage = getAccountingPackage(
             "pk",
             this.value
           );
         });
-        pkListenerAttached = true; // Prevent multiple attachments
+        pkListenerAttached = true; // Ensure the event listener is attached only once
       }
     }
 
-    // Attach event listeners if current card is 15 and listener not yet attached
+    // Attach event listeners to Card 15 if it hasn't been done yet, for KPIR document selection
     if (currentCardId === "card-15" && !kpListenerAttached) {
       const documentsKPIRSelect = document.getElementById(
         "documents_KPIR_RyczaltzVAT"
       );
 
       if (documentsKPIRSelect) {
+        // Update the package description when the document count changes
         documentsKPIRSelect.addEventListener("change", function () {
           updateDescriptionKPIR(this.value);
-          // Store the selected accounting package
           userSelections.accountingPackage = getAccountingPackage(
             "kp",
             this.value
           );
         });
-        kpListenerAttached = true; // Prevent multiple attachments
+        kpListenerAttached = true; // Ensure the event listener is attached only once
       }
     }
 
-    // Display packages when on Card 13
+    // Display available HR and payroll packages when on Card 13
     if (currentCardId === "card-13") {
       displayPackages();
     }
 
-    // Attach event listener on Card 13 radio buttons
+    // Add event listeners to handle HR package selection on Card 13
     if (currentCardId === "card-13") {
       const hrOptions = document.getElementsByName("Obsługa kadrowo-płacowa");
       hrOptions.forEach((option) => {
         option.addEventListener("change", function () {
-          // Store the selected HR package
-          userSelections.hrPackage = getHRPackage();
+          userSelections.hrPackage = getHRPackage(); // Store the selected HR package based on user choice
         });
       });
     }
+  }
+}
+
+// Update the description for the "Mentzen bez VAT" package based on the selected accounting type
+function updateMentzenBezVatDescription() {
+  const descriptionDiv = document.getElementById("description_MentzenBezVat");
+  if (
+    userSelections.accountingTypeSelection ===
+    "Ryczałt od przychodów ewidencjonowanych bez VAT"
+  ) {
+    displayMentzenBezVatDescription(); // Show the relevant package description
+    userSelections.accountingPackage = {
+      name: "Mentzen bez VAT",
+      subscriptionId: 108,
+    };
+  } else {
+    if (descriptionDiv) {
+      descriptionDiv.innerHTML = ""; // Clear the description if this accounting type is not selected
+    }
+    userSelections.accountingPackage = null; // Reset the accounting package selection
+  }
+}
+
+// Display the details of the "Mentzen bez VAT" package
+function displayMentzenBezVatDescription() {
+  const descriptionDiv = document.getElementById("description_MentzenBezVat");
+  if (descriptionDiv) {
+    descriptionDiv.innerHTML = `
+      <h3>Mentzen bez VAT</h3>
+      <ul>
+        <li>prowadzenie księgowości dla Ryczałtu bez VAT,</li>
+        <li>automatyczne płatności,</li>
+        <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
+        <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
+        <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
+        <li>dostęp do szablonów umów,</li>
+        <li>wsparcie w kontrolach podatkowych,</li>
+        <li>newsletter podatkowy,</li>
+        <li>dostęp do webinarów.</li>
+      </ul>
+      <p><strong>Pakiet miesięczny</strong></p>
+      <p><strong>250 zł netto</strong></p>
+    `;
   }
 }
 

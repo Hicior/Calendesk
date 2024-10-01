@@ -7,12 +7,12 @@
 body {
     font-family: 'Montserrat', Helvetica, Arial, Lucida, sans-serif;
     color: #585858;
-    background: linear-gradient(to bottom, #f9f9f9, #eeeeee);
+    background: #fff;
     min-height: 100vh;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 853px;
     margin: 50px auto;
     padding: 0 20px;
 }
@@ -24,11 +24,12 @@ form {
 }
 
 .card {
-    background: #fff;
-    padding: 20px;
+    background: linear-gradient(135deg, #f8f8f8, #ffffff);
+    border: 1px solid #e0e0e0;
+    padding: 25px;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.12);
     position: absolute;
     top: 0;
     left: 0;
@@ -52,18 +53,18 @@ form {
 .card h1 {
     margin-top: 0;
     font-weight: 700;
-    font-size: 32px;
-    margin-bottom: 15px;
+    font-size: 35px;
+    margin-bottom: 20px;
 }
 
 .card h2 {
     font-weight: 500;
-    font-size: 18px;
-    margin-bottom: 30px;
+    font-size: 20px;
+    margin-bottom: 40px;
 }
 
 .card p {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
 }
 
@@ -163,7 +164,7 @@ form {
 
 .first-card-buttons {
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 40px;
 }
 
 .submit-card-buttons {
@@ -274,21 +275,22 @@ a:hover {
   }
   
   .buttons-container h2 {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 24px;
-    color: #333;
+    color: #585858;
   }
   
   .buttons-container .button {
     display: inline-block;
-    padding: 15px 25px;
+    padding: 13px 26px;
     background-color: #f59d24;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
     margin: 10px;
     font-size: 18px;
     transition: background-color 0.3s ease;
+    
   }
   
   .buttons-container .button:hover {
@@ -302,10 +304,6 @@ a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* Responsive Styles */
