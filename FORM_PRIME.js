@@ -1,167 +1,215 @@
+// Initialize the current card index to 1
 let currentCard = 1;
+
+// Define the order in which the cards (questions/pages) will be displayed
 let cardOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16];
 
+// Flags to ensure event listeners are attached only once
 let pkListenerAttached = false;
 let kpListenerAttached = false;
 
-let userSelections = {
-  accountingPackage: null,
-  hrPackage: null,
-  accountingTypeSelection: null,
+// Object to store the user's selections throughout the form
+const userSelections = {
+  accountingPackage: null, // Selected accounting package
+  hrPackage: null, // Selected HR package
+  accountingTypeSelection: null, // Selected accounting type
 };
 
+// Arrays to store available package types and packages by type
 let availablePackageTypes = [];
 let availablePackagesByType = {};
 
+// Wait for the DOM to fully load before executing scripts
 document.addEventListener("DOMContentLoaded", function () {
+  // Display the first card
   showCard(currentCard);
 
+  // Get references to the "Yes" and "No" options for the employee question
   const employeesYes = document.getElementById("employeesYes");
   const employeesNo = document.getElementById("employeesNo");
 
+  // Attach change event listeners if the elements exist
   if (employeesYes) {
-    employeesYes.addEventListener("change", function () {
-      if (this.checked) {
-        addConditionalCards();
-      }
-    });
+    employeesYes.addEventListener("change", handleEmployeeChange);
   }
 
   if (employeesNo) {
-    employeesNo.addEventListener("change", function () {
-      if (this.checked) {
-        removeConditionalCards();
-      }
-    });
+    employeesNo.addEventListener("change", handleEmployeeChange);
   }
 
+  // Get the form element and attach a submit event listener
   const form = document.getElementById("surveyForm");
-  form.addEventListener("submit", function (event) {
+  form.addEventListener("submit", async function (event) {
+    // Prevent the default form submission behavior
     event.preventDefault();
 
     // Remove 'required' attributes from hidden inputs before submission
     removeRequiredFromHiddenInputs();
 
+    // Update user selections with the HR package
     userSelections.hrPackage = getHRPackage();
 
+    // Collect form data
     const formData = new FormData(form);
 
-    fetch("https://formspree.io/f/mqazvjvp", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Form submission failed");
-        }
-      })
-      .then((data) => {
-        form.innerHTML =
-          '<div class="submission-message">Dziękujemy! Twoja odpowiedź została przesłana.</div>';
-        displayPurchaseButtons();
-      })
-      .catch((error) => {
-        form.innerHTML =
-          '<div class="submission-message">Wystąpił problem z przesłaniem formularza. Prosimy spróbować ponownie później lub zgłosić błąd przesyłając wiadomość na czacie w prawym dolnym rogu.</div>';
-        console.error(error);
+    try {
+      // Send form data to the server using Fetch API
+      const response = await fetch("https://formspree.io/f/mqazvjvp", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
       });
+
+      // Check if the response is successful
+      if (!response.ok) {
+        throw new Error(`Form submission failed: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      // Display a success message and show purchase buttons
+      form.innerHTML =
+        '<div class="submission-message">Dziękujemy! Twoja odpowiedź została przesłana.</div>';
+      displayPurchaseButtons();
+    } catch (error) {
+      // Display an error message if submission fails
+      form.innerHTML =
+        '<div class="submission-message">Wystąpił problem z przesłaniem formularza. Prosimy spróbować ponownie później lub zgłosić błąd przesyłając wiadomość na czacie w prawym dolnym rogu.</div>';
+      console.error("Form submission error:", error);
+    }
   });
 });
 
-function showCard(n) {
-  let cards = document.querySelectorAll(".card");
+// Function to handle changes in the employee question (Yes/No)
+function handleEmployeeChange() {
+  // If "Yes" is selected, add conditional cards related to employees
+  if (this.id === "employeesYes" && this.checked) {
+    addConditionalCards();
+  }
+  // If "No" is selected, remove those conditional cards
+  else if (this.id === "employeesNo" && this.checked) {
+    removeConditionalCards();
+  }
+}
 
+// Function to display the current card based on the index 'n'
+function showCard(n) {
+  const cards = document.querySelectorAll(".card");
+
+  // Hide all cards initially
   cards.forEach(function (card) {
     card.classList.remove("card-active");
   });
 
-  let currentCardId = "card-" + cardOrder[n - 1];
-  let currentCardElement = document.getElementById(currentCardId);
+  // Get the current card's ID and element
+  const currentCardId = "card-" + cardOrder[n - 1];
+  const currentCardElement = document.getElementById(currentCardId);
+
   if (currentCardElement) {
+    // Show the current card
     currentCardElement.classList.add("card-active");
 
+    // Initialize specific cards with additional logic
     if (currentCardId === "card-3") {
-      const accountingOptions = document.getElementsByName("Forma księgowości");
-
-      const selectedOption = document.querySelector(
-        'input[name="Forma księgowości"]:checked'
-      );
-      if (selectedOption) {
-        userSelections.accountingTypeSelection = selectedOption.value;
-      }
-
-      updateMentzenBezVatDescription();
-
-      accountingOptions.forEach((option) => {
-        option.addEventListener("change", function () {
-          userSelections.accountingTypeSelection = this.value;
-          updateMentzenBezVatDescription();
-        });
-      });
+      initializeAccountingTypeCard();
     }
 
     if (currentCardId === "card-14" && !pkListenerAttached) {
-      const documentsPKSelect = document.getElementById("documents_PK");
-
-      if (documentsPKSelect) {
-        documentsPKSelect.addEventListener("change", function () {
-          updateDescriptionPK(this.value);
-          userSelections.accountingPackage = getAccountingPackage(
-            "pk",
-            this.value
-          );
-        });
-        pkListenerAttached = true;
-      }
+      initializeDocumentsPKCard();
     }
 
     if (currentCardId === "card-15" && !kpListenerAttached) {
-      const documentsKPIRSelect = document.getElementById(
-        "documents_KPIR_RyczaltzVAT"
-      );
-
-      if (documentsKPIRSelect) {
-        documentsKPIRSelect.addEventListener("change", function () {
-          updateDescriptionKPIR(this.value);
-          userSelections.accountingPackage = getAccountingPackage(
-            "kp",
-            this.value
-          );
-        });
-        kpListenerAttached = true;
-      }
+      initializeDocumentsKPIRCard();
     }
 
     if (currentCardId === "card-13") {
       displayPackages();
-
-      const hrOptions = document.getElementsByName("Obsługa kadrowo-płacowa");
-      hrOptions.forEach((option) => {
-        option.addEventListener("change", function () {
-          userSelections.hrPackage = getHRPackage();
-        });
-      });
+      attachHRPackageListeners();
     }
   }
 }
 
+// Function to initialize the accounting type selection card
+function initializeAccountingTypeCard() {
+  const accountingOptions = document.getElementsByName("Forma księgowości");
+
+  // Get the currently selected accounting type
+  const selectedOption = document.querySelector(
+    'input[name="Forma księgowości"]:checked'
+  );
+  if (selectedOption) {
+    userSelections.accountingTypeSelection = selectedOption.value;
+  }
+
+  // Update the description based on the selection
+  updateMentzenBezVatDescription();
+
+  // Attach change event listeners to accounting options
+  accountingOptions.forEach((option) => {
+    option.addEventListener("change", function () {
+      userSelections.accountingTypeSelection = this.value;
+      updateMentzenBezVatDescription();
+    });
+  });
+}
+
+// Function to initialize the documents selection for full accounting (PK)
+function initializeDocumentsPKCard() {
+  const documentsPKSelect = document.getElementById("documents_PK");
+
+  if (documentsPKSelect) {
+    // Attach change event listener to update description and user selections
+    documentsPKSelect.addEventListener("change", function () {
+      updateDescriptionPK(this.value);
+      userSelections.accountingPackage = getAccountingPackage("pk", this.value);
+    });
+    pkListenerAttached = true; // Set flag to true to avoid re-attaching
+  }
+}
+
+// Function to initialize the documents selection for simplified accounting (KPIR)
+function initializeDocumentsKPIRCard() {
+  const documentsKPIRSelect = document.getElementById(
+    "documents_KPIR_RyczaltzVAT"
+  );
+
+  if (documentsKPIRSelect) {
+    // Attach change event listener to update description and user selections
+    documentsKPIRSelect.addEventListener("change", function () {
+      updateDescriptionKPIR(this.value);
+      userSelections.accountingPackage = getAccountingPackage("kp", this.value);
+    });
+    kpListenerAttached = true; // Set flag to true to avoid re-attaching
+  }
+}
+
+// Function to attach event listeners to HR package options
+function attachHRPackageListeners() {
+  const hrOptions = document.getElementsByName("Obsługa kadrowo-płacowa");
+  hrOptions.forEach((option) => {
+    option.addEventListener("change", function () {
+      userSelections.hrPackage = getHRPackage();
+    });
+  });
+}
+
+// Function to update the description for "Mentzen bez VAT" package
 function updateMentzenBezVatDescription() {
   const descriptionDiv = document.getElementById("description_MentzenBezVat");
   if (
     userSelections.accountingTypeSelection ===
     "Ryczałt od przychodów ewidencjonowanych bez VAT"
   ) {
+    // If the selected accounting type is "Ryczałt bez VAT", display the description
     displayMentzenBezVatDescription();
     userSelections.accountingPackage = {
       name: "Mentzen bez VAT",
       subscriptionId: 108,
     };
   } else {
+    // Otherwise, clear the description and reset the accounting package
     if (descriptionDiv) {
       descriptionDiv.innerHTML = "";
     }
@@ -169,6 +217,7 @@ function updateMentzenBezVatDescription() {
   }
 }
 
+// Function to display the detailed description of "Mentzen bez VAT" package
 function displayMentzenBezVatDescription() {
   const descriptionDiv = document.getElementById("description_MentzenBezVat");
   if (descriptionDiv) {
@@ -191,92 +240,110 @@ function displayMentzenBezVatDescription() {
   }
 }
 
+// Function to navigate to the next or previous card
 function nextPrev(n) {
   const currentCardId = "card-" + cardOrder[currentCard - 1];
   const currentCardElement = document.getElementById(currentCardId);
 
+  // Validate the current card before moving forward
   if (n === 1) {
     if (!validateForm(currentCardElement)) {
       return false;
     }
   }
 
+  // Adjust the card order based on the accounting type selection
   if (currentCard === cardOrder.indexOf(3) + 1 && n === 1) {
     adjustCardsAfterAccountingType();
   }
   if (currentCard === cardOrder.indexOf(4) + 1 && n === -1) {
+    // Remove cards 14 and 15 if going back from card 4
     cardOrder = cardOrder.filter((card) => card !== 14 && card !== 15);
     pkListenerAttached = false;
     kpListenerAttached = false;
     userSelections.accountingPackage = null;
   }
 
+  // Update the current card index
   currentCard += n;
 
+  // Ensure the current card index stays within bounds
   if (currentCard < 1) {
     currentCard = 1;
   } else if (currentCard > cardOrder.length) {
     currentCard = cardOrder.length;
   }
 
+  // Display the new current card
   showCard(currentCard);
 }
 
+// Function to validate required fields in the current card
 function validateForm(cardElement) {
   let valid = true;
-  let showError = false;
+
+  // Select all required inputs, selects, and textareas in the current card
   const requiredFields = cardElement.querySelectorAll(
     "input[required], select[required], textarea[required]"
   );
 
   requiredFields.forEach(function (field) {
     if (field.type === "radio") {
+      // For radio buttons, check if any option is selected
       const radioGroup = cardElement.querySelectorAll(
         `input[name="${field.name}"]`
       );
       const isChecked = Array.from(radioGroup).some((radio) => radio.checked);
       if (!isChecked) {
         valid = false;
-        showError = true;
-        // Add 'invalid' class to all radios in the group
-        radioGroup.forEach((radio) => {
-          radio.classList.add("invalid");
-          // Add event listener to remove 'invalid' class when changed
-          radio.addEventListener("change", function () {
-            radioGroup.forEach((radio) => radio.classList.remove("invalid"));
-            hideErrorMessage(cardElement);
-          });
-        });
+        addInvalidClass(radioGroup);
       }
     } else if (!field.value) {
+      // For other inputs, check if the value is empty
       valid = false;
-      showError = true;
-      field.classList.add("invalid");
-      // Add event listener to remove 'invalid' class when input changes
-      field.addEventListener("input", function () {
-        if (field.value) {
-          field.classList.remove("invalid");
-          hideErrorMessage(cardElement);
-        }
-      });
+      addInvalidClass([field]);
     } else {
+      // Remove 'invalid' class if the field is valid
       field.classList.remove("invalid");
     }
   });
 
-  if (!valid && showError) {
-    // Show custom error message
+  if (!valid) {
+    // Show error message if validation fails
     showErrorMessage(cardElement, "Udziel odpowiedzi, aby kontynuować");
   } else {
+    // Hide error message if validation passes
     hideErrorMessage(cardElement);
   }
 
   return valid;
 }
 
+// Function to add 'invalid' class to fields and attach event listeners
+function addInvalidClass(elements) {
+  elements.forEach((element) => {
+    element.classList.add("invalid");
+    element.addEventListener("input", removeInvalidClass);
+    element.addEventListener("change", removeInvalidClass);
+  });
+}
+
+// Function to remove 'invalid' class when the user corrects the input
+function removeInvalidClass(event) {
+  const element = event.target;
+  element.classList.remove("invalid");
+  const cardElement = element.closest(".card");
+  const invalidElements = cardElement.querySelectorAll(".invalid");
+  if (invalidElements.length === 0) {
+    hideErrorMessage(cardElement);
+  }
+}
+
+// Function to display an error message in the current card
 function showErrorMessage(cardElement, message) {
   let errorMessageDiv = cardElement.querySelector(".error-message");
   if (!errorMessageDiv) {
+    // Create an error message div if it doesn't exist
     errorMessageDiv = document.createElement("div");
     errorMessageDiv.classList.add("error-message");
     cardElement.insertBefore(errorMessageDiv, cardElement.firstChild);
@@ -285,22 +352,25 @@ function showErrorMessage(cardElement, message) {
   errorMessageDiv.style.display = "inline-block";
 }
 
+// Function to hide the error message in the current card
 function hideErrorMessage(cardElement) {
-  let errorMessageDiv = cardElement.querySelector(".error-message");
+  const errorMessageDiv = cardElement.querySelector(".error-message");
   if (errorMessageDiv) {
     errorMessageDiv.style.display = "none";
   }
 }
 
+// Function to adjust the card order after selecting an accounting type
 function adjustCardsAfterAccountingType() {
-  // Remove cards 14 and 15 from cardOrder
+  // Remove cards 14 and 15 from the card order
   cardOrder = cardOrder.filter((card) => card !== 14 && card !== 15);
 
+  // Get the selected accounting type
   const accountingType = document.querySelector(
     'input[name="Forma księgowości"]:checked'
   )?.value;
 
-  let index = cardOrder.indexOf(3) + 1;
+  const index = cardOrder.indexOf(3) + 1;
 
   // Remove 'required' attributes from both inputs
   document.getElementById("documents_PK").removeAttribute("required");
@@ -309,6 +379,7 @@ function adjustCardsAfterAccountingType() {
     .removeAttribute("required");
 
   if (accountingType === "Pełna księgowość") {
+    // If "Pełna księgowość" is selected, insert card 14
     cardOrder.splice(index, 0, 14);
     // Add 'required' attribute to the input in card 14
     document
@@ -317,6 +388,7 @@ function adjustCardsAfterAccountingType() {
   } else if (
     accountingType === "KPiR lub Ryczałt od przychodów ewidencjonowanych z VAT"
   ) {
+    // If "KPiR lub Ryczałt z VAT" is selected, insert card 15
     cardOrder.splice(index, 0, 15);
     // Add 'required' attribute to the input in card 15
     document
@@ -325,8 +397,10 @@ function adjustCardsAfterAccountingType() {
   }
 }
 
+// Function to add conditional cards when the user has employees
 function addConditionalCards() {
   if (!cardOrder.includes(12)) {
+    // Insert cards 12 and 13 after card 11
     const index = cardOrder.indexOf(11) + 1;
     cardOrder.splice(index, 0, 12, 13);
 
@@ -344,7 +418,9 @@ function addConditionalCards() {
   }
 }
 
+// Function to remove conditional cards when the user has no employees
 function removeConditionalCards() {
+  // Remove cards 12 and 13 from the card order
   cardOrder = cardOrder.filter((card) => card !== 12 && card !== 13);
   if (currentCard > cardOrder.length) {
     currentCard = cardOrder.length;
@@ -360,11 +436,13 @@ function removeConditionalCards() {
   });
 }
 
+// Function to remove 'required' attributes from hidden inputs before form submission
 function removeRequiredFromHiddenInputs() {
   const allCards = document.querySelectorAll(".card");
   allCards.forEach((card) => {
     const cardId = parseInt(card.id.replace("card-", ""));
     if (!cardOrder.includes(cardId)) {
+      // Remove 'required' from inputs in cards that are not in the current card order
       const inputs = card.querySelectorAll("input, select, textarea");
       inputs.forEach((input) => {
         input.removeAttribute("required");
@@ -373,6 +451,7 @@ function removeRequiredFromHiddenInputs() {
   });
 }
 
+// Object containing data for full accounting (Pełna Księgowość) packages
 const pkPackages = {
   "do 20 dokumentów": {
     numberOfDocuments: "20",
@@ -411,39 +490,43 @@ const pkPackages = {
   },
 };
 
+// Function to update the description for the selected PK package
 function updateDescriptionPK(selectedValue) {
   let descriptionText = "";
   const descriptionPK = document.getElementById("description_PK");
   if (selectedValue && pkPackages[selectedValue]) {
-    let packageInfo = pkPackages[selectedValue];
-    let numberOfDocuments = packageInfo.numberOfDocuments;
-    let packagePrice = packageInfo.price;
+    const packageInfo = pkPackages[selectedValue];
+    const numberOfDocuments = packageInfo.numberOfDocuments;
+    const packagePrice = packageInfo.price;
 
+    // Construct the description text using template literals
     descriptionText = `
-            <h3>Szeroki Mentzen ${numberOfDocuments}</h3>
-            <ul>
-                <li>prowadzenie księgowości w formie Ksiąg Rachunkowych,</li>
-                <li>pakiet dotyczy max. ${numberOfDocuments} dokumentów miesięcznie,</li>
-                <li>nielimitowane konsultacje podatkowe,</li>
-                <li>automatyczne płatności,</li>
-                <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
-                <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
-                <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
-                <li>dostęp do szablonów umów,</li>
-                <li>wsparcie w kontrolach podatkowych,</li>
-                <li>newsletter podatkowy,</li>
-                <li>dostęp do webinarów.</li>
-            </ul>
-            <p><strong>Pakiet miesięczny</strong></p>
-            <p><strong>${packagePrice}</strong></p>
-        `;
+      <h3>Szeroki Mentzen ${numberOfDocuments}</h3>
+      <ul>
+        <li>prowadzenie księgowości w formie Ksiąg Rachunkowych,</li>
+        <li>pakiet dotyczy max. ${numberOfDocuments} dokumentów miesięcznie,</li>
+        <li>nielimitowane konsultacje podatkowe,</li>
+        <li>automatyczne płatności,</li>
+        <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
+        <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
+        <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
+        <li>dostęp do szablonów umów,</li>
+        <li>wsparcie w kontrolach podatkowych,</li>
+        <li>newsletter podatkowy,</li>
+        <li>dostęp do webinarów.</li>
+      </ul>
+      <p><strong>Pakiet miesięczny</strong></p>
+      <p><strong>${packagePrice}</strong></p>
+    `;
   }
 
   if (descriptionPK) {
+    // Update the HTML content with the description
     descriptionPK.innerHTML = descriptionText;
   }
 }
 
+// Object containing data for simplified accounting (KPiR/Ryczałt z VAT) packages
 const kpPackages = {
   "do 10 dokumentów": {
     numberOfDocuments: "10",
@@ -512,47 +595,51 @@ const kpPackages = {
   },
 };
 
+// Function to update the description for the selected KPIR package
 function updateDescriptionKPIR(selectedValue) {
   let descriptionText = "";
   const descriptionKPIR = document.getElementById("description_KPIR");
   if (selectedValue && kpPackages[selectedValue]) {
-    let packageInfo = kpPackages[selectedValue];
-    let numberOfDocuments = packageInfo.numberOfDocuments;
-    let packagePrice = packageInfo.price;
+    const packageInfo = kpPackages[selectedValue];
+    const numberOfDocuments = packageInfo.numberOfDocuments;
+    const packagePrice = packageInfo.price;
 
+    // Construct the description text using template literals
     descriptionText = `
-            <h3>Uproszczony Mentzen ${numberOfDocuments}</h3>
-            <ul>
-                <li>prowadzenie księgowości w formie Księgi Przychodów i Rozchodów lub dla Ryczałtu z VATem,</li>
-                <li>pakiet dotyczy max. ${numberOfDocuments} dokumentów miesięcznie,</li>
-                <li>nielimitowane konsultacje podatkowe,</li>
-                <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
-                <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
-                <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
-                <li>dostęp do szablonów umów,</li>
-                <li>wsparcie w kontrolach podatkowych,</li>
-                <li>newsletter podatkowy,</li>
-                <li>dostęp do webinarów.</li>
-            </ul>
-            <p><strong>Pakiet miesięczny</strong></p>
-            <p><strong>${packagePrice}</strong></p>
-        `;
+      <h3>Uproszczony Mentzen ${numberOfDocuments}</h3>
+      <ul>
+        <li>prowadzenie księgowości w formie Księgi Przychodów i Rozchodów lub dla Ryczałtu z VATem,</li>
+        <li>pakiet dotyczy max. ${numberOfDocuments} dokumentów miesięcznie,</li>
+        <li>nielimitowane konsultacje podatkowe,</li>
+        <li>dostęp do platformy umożliwiającej przekazywanie dokumentów,</li>
+        <li>dostęp do danych raportowych takich jak podatki, wynagrodzenia, ewidencja VAT,</li>
+        <li>powiadomienia SMS o zbliżających się terminach płatności podatków itp.,</li>
+        <li>dostęp do szablonów umów,</li>
+        <li>wsparcie w kontrolach podatkowych,</li>
+        <li>newsletter podatkowy,</li>
+        <li>dostęp do webinarów.</li>
+      </ul>
+      <p><strong>Pakiet miesięczny</strong></p>
+      <p><strong>${packagePrice}</strong></p>
+    `;
   }
 
   if (descriptionKPIR) {
+    // Update the HTML content with the description
     descriptionKPIR.innerHTML = descriptionText;
   }
 }
 
+// Function to get the accounting package based on type and selected value
 function getAccountingPackage(type, selectedValue) {
   if (type === "pk" && pkPackages[selectedValue]) {
-    let packageInfo = pkPackages[selectedValue];
+    const packageInfo = pkPackages[selectedValue];
     return {
       name: `Szeroki Mentzen ${packageInfo.numberOfDocuments}`,
       subscriptionId: packageInfo.subscriptionId,
     };
   } else if (type === "kp" && kpPackages[selectedValue]) {
-    let packageInfo = kpPackages[selectedValue];
+    const packageInfo = kpPackages[selectedValue];
     return {
       name: `Uproszczony Mentzen ${packageInfo.numberOfDocuments}`,
       subscriptionId: packageInfo.subscriptionId,
@@ -562,24 +649,29 @@ function getAccountingPackage(type, selectedValue) {
   }
 }
 
+// Function to display available HR packages based on user inputs
 function displayPackages() {
+  // Get the number of employees and civil contracts from the inputs
   const employeeCount =
     parseInt(document.getElementById("employeeCount")?.value) || 0;
   const civilContractCount =
     parseInt(document.getElementById("civilContractCount")?.value) || 0;
 
+  // Calculate totals for different package variants
   const variant1Total = employeeCount * 2 + civilContractCount;
   const variant2Total = employeeCount + civilContractCount;
 
   const packagesContainer = document.getElementById("packagesContainer");
 
+  // Get packages based on the calculated totals
   const package1 = getPackageForTotal(variant1Total);
   const package2 = getPackageForTotal(variant2Total);
 
-  let packagesToDisplay = [];
+  const packagesToDisplay = [];
   availablePackageTypes = [];
   availablePackagesByType = {};
 
+  // Logic to determine which packages to display based on user input
   if (!package1 && !package2) {
     packagesContainer.innerHTML =
       '<p style="margin-bottom: 20px;">W celu uzyskania indywidualnej wyceny prosimy o kontakt z działem administracji: <a href="mailto:ksiegowosc@mentzen.pl">ksiegowosc@mentzen.pl</a></p>';
@@ -631,53 +723,53 @@ function displayPackages() {
     }
   }
 
+  // Generate HTML content for the packages to display
   let packagesHTML = "";
 
   packagesHTML += '<div class="packages-row">';
 
   packagesToDisplay.forEach((item) => {
-    let labelsText = item.labels.join(", ");
+    const labelsText = item.labels.join(", ");
     if (item.package) {
       packagesHTML += `
-          <div class="package-name">
-              <h4>${item.package.name}</h4>
-              <p><strong>${labelsText}</strong></p>
-              <p><strong>Cena netto:</strong> ${item.package.price} zł miesięcznie</p>
-          </div>
+        <div class="package-name">
+          <h4>${item.package.name}</h4>
+          <p><strong>${labelsText}</strong></p>
+          <p><strong>Cena netto:</strong> ${item.package.price} zł miesięcznie</p>
+        </div>
       `;
     } else {
       packagesHTML += `
-          <div class="package-name">
-              <h4>${item.labels[0]}</h4>
-              <p>${item.message}</p>
-          </div>
+        <div class="package-name">
+          <h4>${item.labels[0]}</h4>
+          <p>${item.message}</p>
+        </div>
       `;
     }
   });
 
   packagesHTML += "</div>";
 
+  // Add a common description for the packages
   packagesHTML += `
-      <div class="common-description">
-          <p><strong>Pakiet płacowy obejmuje</strong> przede wszystkim comiesięczne naliczanie wynagrodzeń, przygotowywanie list wynagrodzeń, rozliczanie się z ZUS-em i Urzędem Skarbowym.</p>
-          <p><strong>Pakiet kadrowo-płacowy dodatkowo obejmuje</strong> m.in. ewidencjonowanie urlopów, kontrolowanie ważności badań lekarskich i szkoleń BHP, przygotowywanie dokumentów pracowniczych niezbędnych do rozpoczęcia stosunku pracy jak i zakończenia (np. umowa o pracę, świadectwo pracy) oraz prowadzenie akt osobowych (opcjonalnie).</p>
-      </div>
+    <div class="common-description">
+      <p><strong>Pakiet płacowy obejmuje</strong> przede wszystkim comiesięczne naliczanie wynagrodzeń, przygotowywanie list wynagrodzeń, rozliczanie się z ZUS-em i Urzędem Skarbowym.</p>
+      <p><strong>Pakiet kadrowo-płacowy dodatkowo obejmuje</strong> m.in. ewidencjonowanie urlopów, kontrolowanie ważności badań lekarskich i szkoleń BHP, przygotowywanie dokumentów pracowniczych niezbędnych do rozpoczęcia stosunku pracy jak i zakończenia (np. umowa o pracę, świadectwo pracy) oraz prowadzenie akt osobowych (opcjonalnie).</p>
+    </div>
   `;
 
   packagesContainer.innerHTML = packagesHTML;
 
-  const hrOptions = document.getElementsByName("Obsługa kadrowo-płacowa");
-  hrOptions.forEach((option) => {
-    option.addEventListener("change", function () {
-      userSelections.hrPackage = getHRPackage();
-    });
-  });
+  // Attach event listeners to the HR package options
+  attachHRPackageListeners();
 
+  // Update the user selections with the HR package
   userSelections.hrPackage = getHRPackage();
 }
 
+// Function to get the appropriate package based on the total count
 function getPackageForTotal(total) {
-  for (let pkg of packages) {
+  for (const pkg of packages) {
     if (total >= pkg.min && total <= pkg.max) {
       return pkg;
     }
@@ -685,6 +777,7 @@ function getPackageForTotal(total) {
   return null;
 }
 
+// Function to get the selected HR package based on user choice
 function getHRPackage() {
   const selectedOption = document.querySelector(
     'input[name="Obsługa kadrowo-płacowa"]:checked'
@@ -711,9 +804,22 @@ function getHRPackage() {
   };
 }
 
+// Array containing data for HR packages
 const packages = [
-  { min: 1, max: 1, name: "Kadry Mentzena 1", price: 60, subscriptionId: 109 },
-  { min: 2, max: 2, name: "Kadry Mentzena 2", price: 120, subscriptionId: 110 },
+  {
+    min: 1,
+    max: 1,
+    name: "Kadry Mentzena 1",
+    price: 60,
+    subscriptionId: 109,
+  },
+  {
+    min: 2,
+    max: 2,
+    name: "Kadry Mentzena 2",
+    price: 120,
+    subscriptionId: 110,
+  },
   {
     min: 3,
     max: 4,
@@ -772,6 +878,7 @@ const packages = [
   },
 ];
 
+// Function to display purchase buttons after form submission
 function displayPurchaseButtons() {
   const formContainer = document.querySelector(".container");
   const buttonsContainer = document.createElement("div");
@@ -779,6 +886,7 @@ function displayPurchaseButtons() {
 
   let buttonsHTML = "<h2>Zapraszamy do wykupienia subskrypcji!</h2>";
 
+  // Add button for the accounting package if selected
   if (userSelections.accountingPackage) {
     buttonsHTML += `
       <a href="https://subskrypcje.mentzen.pl/subscription/${userSelections.accountingPackage.subscriptionId}" target="_blank" class="button">
@@ -787,6 +895,7 @@ function displayPurchaseButtons() {
     `;
   }
 
+  // Add button for the HR package if selected
   if (userSelections.hrPackage) {
     buttonsHTML += `
       <a href="https://subskrypcje.mentzen.pl/subscription/${userSelections.hrPackage.subscriptionId}" target="_blank" class="button">
@@ -797,5 +906,6 @@ function displayPurchaseButtons() {
 
   buttonsContainer.innerHTML = buttonsHTML;
 
+  // Append the buttons to the form container
   formContainer.appendChild(buttonsContainer);
 }
