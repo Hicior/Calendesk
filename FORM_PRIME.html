@@ -21,11 +21,11 @@
                     <button type="button" onclick="nextPrev(1)">Rozpocznij teraz</button>
                 </div>
             </div>
-
+    
             <!-- Card 2: Proszę wybrać branżę -->
             <div class="card" id="card-2">
                 <label for="industry">Proszę wybrać branżę:</label>
-                <select id="industry" name="Branża">
+                <select id="industry" name="Branża" required>
                     <option value="">-- Wybierz opcję --</option>
                     <option value="Rolnictwo">Rolnictwo</option>
                     <option value="Produkcja">Produkcja</option>
@@ -46,16 +46,16 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 3: Jaką formę prowadzenia księgowości potrzebujesz? -->
             <div class="card" id="card-3">
                 <label for="accountingType">Jaką formę prowadzenia księgowości potrzebujesz?</label>
                 <div class="radio-group">
-                    <input type="radio" id="fullAccounting" name="Forma księgowości" value="Pełna księgowość">
+                    <input type="radio" id="fullAccounting" name="Forma księgowości" value="Pełna księgowość" required>
                     <label for="fullAccounting">Pełna księgowość</label>
-                    <input type="radio" id="kpirVat" name="Forma księgowości" value="KPiR lub Ryczałt od przychodów ewidencjonowanych z VAT">
+                    <input type="radio" id="kpirVat" name="Forma księgowości" value="KPiR lub Ryczałt od przychodów ewidencjonowanych z VAT" required>
                     <label for="kpirVat">KPiR lub Ryczałt od przychodów ewidencjonowanych z VAT</label>
-                    <input type="radio" id="ryczaltNoVat" name="Forma księgowości" value="Ryczałt od przychodów ewidencjonowanych bez VAT">
+                    <input type="radio" id="ryczaltNoVat" name="Forma księgowości" value="Ryczałt od przychodów ewidencjonowanych bez VAT" required>
                     <label for="ryczaltNoVat">Ryczałt od przychodów ewidencjonowanych bez VAT</label>
                 </div>
                 <!-- Miejsce na opis pakietu Mentzen bez VAT -->
@@ -66,77 +66,77 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 4: Nazwa firmy -->
             <div class="card" id="card-4">
                 <label for="companyName">Nazwa firmy</label>
-                <input type="text" id="companyName" name="Nazwa firmy">
+                <input type="text" id="companyName" name="Nazwa firmy" required>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 5: NIP firmy (was card-3) -->
             <div class="card" id="card-5">
                 <label for="companyNIP">NIP firmy</label>
-                <input type="text" id="companyNIP" name="NIP firmy">
+                <input type="text" id="companyNIP" name="NIP firmy" required>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 6: Adres e-mail -->
             <div class="card" id="card-6">
                 <label for="email">Adres e-mail</label>
-                <input type="email" id="email" name="Adres e-mail">
+                <input type="email" id="email" name="Adres e-mail" required>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 7: Telefon kontaktowy -->
             <div class="card" id="card-7">
                 <label for="phone">Telefon kontaktowy</label>
-                <input type="tel" id="phone" name="Telefon kontaktowy">
+                <input type="tel" id="phone" name="Telefon kontaktowy" required>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 8: Aktualny adres zamieszkania właściciela/siedziby spółki -->
             <div class="card" id="card-8">
                 <label for="address">Aktualny adres zamieszkania właściciela/siedziby spółki</label>
-                <input type="text" id="address" name="Aktualny adres zamieszkania właściciela/siedziby spółki">
+                <input type="text" id="address" name="Aktualny adres zamieszkania właściciela/siedziby spółki" required>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 9: Krótki opis Państwa działalności -->
             <div class="card" id="card-9">
                 <label for="description">Krótki opis Państwa działalności</label>
-                <textarea id="description" name="Krótki opis Państwa działalności"></textarea>
+                <textarea id="description" name="Krótki opis Państwa działalności" required></textarea>
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 10: Proszę o wskazanie formy opodatkowania podatkiem dochodowym -->
             <div class="card" id="card-10">
                 <label for="taxForm">Proszę o wskazanie formy opodatkowania podatkiem dochodowym:</label>
-                <select id="taxForm" name="Forma opodatkowania">
+                <select id="taxForm" name="Forma opodatkowania" required>
                     <option value="">-- Wybierz opcję --</option>
                     <option value="Podatek dochodowy 12%/32%">Podatek dochodowy 12%/32%</option>
                     <option value="Podatek liniowy 19%">Podatek liniowy 19%</option>
@@ -152,14 +152,14 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 11: Czy Państwa firma posiada pracowników? -->
             <div class="card" id="card-11">
                 <label>Czy Państwa firma posiada pracowników/zleceniobiorców?</label>
                 <div class="radio-group">
-                    <input type="radio" id="employeesYes" name="Posiada pracowników" value="TAK">
+                    <input type="radio" id="employeesYes" name="Posiada pracowników" value="TAK" required>
                     <label for="employeesYes">TAK</label>
-                    <input type="radio" id="employeesNo" name="Posiada pracowników" value="NIE">
+                    <input type="radio" id="employeesNo" name="Posiada pracowników" value="NIE" required>
                     <label for="employeesNo">NIE</label>
                 </div>
                 <!-- Navigation Buttons -->
@@ -168,37 +168,37 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 12: Liczba pracowników i osób zatrudnionych na umowy cywilnoprawne -->
             <div class="card" id="card-12">
                 <label for="employeeCount">Ilu Państwa firma posiada pracowników?</label>
-                <input type="number" id="employeeCount" name="Liczba pracowników" min="1" step="1">
+                <input type="number" id="employeeCount" name="Liczba pracowników" step="1" required>
                 <label style="margin-top: 20px;" for="civilContractCount">Proszę podać liczbę osób zatrudnionych na umowy cywilnoprawne:</label>
-                <input type="number" id="civilContractCount" name="Zatrudnieni na umowy cywilnoprawne" min="1" step="1">
-
+                <input type="number" id="civilContractCount" name="Zatrudnieni na umowy cywilnoprawne" step="1" required>
+    
                 <!-- Navigation Buttons -->
                 <div class="button-group">
                     <button type="button" onclick="nextPrev(-1)">Wstecz</button>
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 13: Pakiety kadrowe oraz płacowe -->
             <div class="card" id="card-13">
-
+    
                 <!-- Heading and Packages Container -->
                 <h3>Jeśli są Państwo zainteresowani obsługą płacową lub kadrowo-płacową, proponujemy następujące pakiety:</h3>
                 <div id="packagesContainer"></div>
-
+    
                 <label style="margin-top: 30px;">Proszę wybrać jedną z poniższych opcji:</label>
                 <div class="radio-group">
-                    <input type="radio" id="hrAndPayroll" name="Obsługa kadrowo-płacowa" value="Kadry i płace">
+                    <input type="radio" id="hrAndPayroll" name="Obsługa kadrowo-płacowa" value="Kadry i płace" required>
                     <label for="hrAndPayroll">Jestem zainteresowany/a pakietem kadrowo-płacowym</label>
-
-                    <input type="radio" id="payrollOnly" name="Obsługa kadrowo-płacowa" value="Płace">
+    
+                    <input type="radio" id="payrollOnly" name="Obsługa kadrowo-płacowa" value="Płace" required>
                     <label for="payrollOnly">Jestem zainteresowany/a tylko pakietem płacowym</label>
-
-                    <input type="radio" id="notInterested" name="Obsługa kadrowo-płacowa" value="Brak zainteresowania">
+    
+                    <input type="radio" id="notInterested" name="Obsługa kadrowo-płacowa" value="Brak zainteresowania" required>
                     <label for="notInterested">Nie jestem zainteresowany/a prowadzeniem kadr</label>
                 </div>
                 <!-- Navigation Buttons -->
@@ -207,11 +207,11 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 14: Proszę wskazać miesięczną liczbę dokumentów -->
             <div class="card" id="card-14">
                 <label for="documents_PK">Proszę wskazać miesięczną liczbę dokumentów (faktur sprzedażowych oraz kosztowych)</label>
-                <select id="documents_PK" name="Miesięczna liczba dokumentów PK">
+                <select id="documents_PK" name="Miesięczna liczba dokumentów PK" required>
                     <option value="">-- Wybierz opcję --</option>
                     <option value="do 20 dokumentów">do 20 dokumentów</option>
                     <option value="21 - 40 dokumentów">21 - 40 dokumentów</option>
@@ -229,11 +229,11 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 15: Proszę wskazać miesięczną liczbę dokumentów -->
             <div class="card" id="card-15">
                 <label for="documents_KPIR_RyczaltzVAT">Proszę wskazać miesięczną liczbę dokumentów (faktur sprzedażowych oraz kosztowych)</label>
-                <select id="documents_KPIR_RyczaltzVAT" name="Miesięczna liczba dokumentów KPIR_RyczaltzVAT">
+                <select id="documents_KPIR_RyczaltzVAT" name="Miesięczna liczba dokumentów KPIR_RyczaltzVAT" required>
                     <option value="">-- Wybierz opcję --</option>
                     <option value="do 10 dokumentów">do 10 dokumentów</option>
                     <option value="11-30 dokumentów">11-30 dokumentów</option>
@@ -257,7 +257,7 @@
                     <button type="button" onclick="nextPrev(1)">Dalej</button>
                 </div>
             </div>
-
+    
             <!-- Card 16: Informacje dodatkowe -->
             <div class="card" id="card-16">
                 <label for="additionalInfo">Informacje dodatkowe</label>
@@ -268,9 +268,9 @@
                     <button type="submit" class="submit-card-buttons">Zatwierdź i zobacz oferowane pakiety</button>
                 </div>
             </div>
-
+    
         </form>
-    </div>
+    </div>    
       
     <script src="FORM_PRIME.js"></script>
 </body>
