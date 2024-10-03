@@ -1,25 +1,24 @@
 Zamień tekst w moim starym kodzie na nowy, nie zmieniając przy tym styli.
 
 Nowy tekst:
-NEWSLETTER 11.09.2024 r.
+NEWSLETTER 02.10.2024 r.
 
-Zmiany w IP BOX
+Standardy Ochrony Małoletnich
  
 Dzień dobry,
 
-
-ulga IP BOX jest wykorzystywana głównie przez małych i średnich przedsiębiorców z branży IT. Pozwala ona na stosowania 5% podatku zamiast standardowej stawki na skali podatkowej czy podatku liniowym. Rząd planuje jednak zmiany w zakresie tej ulgi, które mogą spowodować, znaczące ograniczenie osób uprawnionych do jej zastosowania. Wprowadzenie limitu zatrudnienia może uniemożliwić korzystanie z niej wielu przedsiębiorcom.
+w dzisiejszym newsletterze przedstawimy najważniejsze informacje dotyczące Standardów Ochrony Małoletnich.
 
 W poniższym wideo znajdą Państwo kluczowe informacje na ten temat.
-<grafika, https://www.youtube.com/watch?si=qKAIiW2jYyL--Ivm&v=LB4yz_W2xgg&feature=youtu.be>
+<grafika z linkiem:https://www.youtube.com/watch?v=mdj48bqSBNs&feature=youtu.be>
+
 
 W razie pytań nasi specjaliści niezmiennie pozostają do Państwa dyspozycji.
 
-
 Z wyrazami szacunku
 
-Wiktor Nadolski
-Doradca podatkowy (14363)
+Łukasz Stasik
+Radca prawny (TR-1566)
 
 Current code:
     <div class="Newsletter-container">
