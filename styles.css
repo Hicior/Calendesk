@@ -793,16 +793,13 @@
 #poradniki-podatkowe:target,
 #poradniki-prawne:target,
 #szkolenia:target,
-#newslettery:target {
+#newslettery:target,
+#webinary:target {
   display: flex;
 }
 
 .hidden-content {
   display: none;
-}
-
-body.modal-open {
-  overflow: hidden;
 }
 
 .audyty-modal {
