@@ -95,14 +95,6 @@
     cursor: pointer;
 }
 
-.logo {
-    position: absolute;
-    bottom: 10px;
-    right: 120px;
-    width: 100px; /* Szerokość logo */
-    height: auto;
-}
-
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -131,12 +123,6 @@
 @media (max-width: 850px) {
     #countdown {
         width: 90vw;
-}
-}
-
-@media (max-width: 850px) {
-    .logo {
-        display: none;
 }
 }
 </style>
@@ -168,9 +154,6 @@
                 </div>
             </div>
             <a href="LINK_DO_REJESTRACJI" class="btn" target="_blank">Zobacz webinar</a>
-            <div class="logo">
-                <img style="width:200px" src="https://hicior.github.io/Calendesk/images/logo_poziom.svg" alt="Logo">
-            </div>
         </div>
     </div>    
     <div class="Contact-Container"> 
@@ -213,7 +196,7 @@
     <script>
         (function() {
             // Set the date and time of the webinar
-            var webinarDate = new Date('2024-09-25T18:00:00');
+            var webinarDate = new Date('2024-10-09T20:00:00');
 
             // Function to update the countdown
             function updateCountdown() {

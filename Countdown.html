@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="Countdown.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'monserrat', sans-serif;
+    background: #fff;
+}
+</style>
+<body>
+    <div class="Countdown-Container">
+        <div id="countdown">
+            <h1>Do rozpoczęcia webinaru pozostało:</h1>
+            <div id="timer">
+                <div class="time-section">
+                    <span id="days">01</span>
+                    <div class="label">Dni</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-section">
+                    <span id="hours">10</span>
+                    <div class="label">Godzin</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-section">
+                    <span id="minutes">14</span>
+                    <div class="label">Minut</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-section">
+                    <span id="seconds">07</span>
+                    <div class="label">Sekund</div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="info-card">
+            <div class="info-text">
+                <h2>Przygotowanie Analizy Strategicznej do Negocjacji</h2>
+                <h3>9.10.2024 20:00</h3>
+                <h4>Paweł Gołębewski</h4>
+            </div>
+            <div class="btns">
+            <a href="https://calendar.app.google/9brtFmczM6qsRDy39" class="btn-remind">
+                <img src="https://hicior.github.io/Calendesk/images/bell-icon.png" alt="" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;">
+                Przypomnij
+            </a>
+            <a href="https://www.youtube.com/live/HyKdW0ZdNPE?si=ye3ovXd13s8J2z6S" class="btn-remind">Zobacz webinar</a>
+            </div>
+        </div>
+
+    </div>    
+    <script src="Countdown.js"></script>        
+</body>
+</html>

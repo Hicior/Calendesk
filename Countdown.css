@@ -1,0 +1,155 @@
+.Countdown-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 0px;
+}
+
+#countdown {
+    text-align: center;
+    background: linear-gradient(135deg, #edf2f7, #cfd8e3);
+    padding: 40px;
+    padding-bottom: 25px;
+    width: 95vw;
+    max-width: 750px;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#countdown h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #2c4c67;
+}
+
+#timer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.time-section {
+    background: rgba(255, 255, 255, 0.35);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for each time box */
+    text-align: center;
+    width: 120px;
+}
+
+.time-section span {
+    display: block;
+    font-size: 48px;
+    font-weight: bold;
+    color: #2c4c67;
+}
+
+.time-section .label {
+    font-size: 16px;
+    color: #2c4c67;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.separator {
+    font-size: 48px;
+    color: #2c4c67;
+    line-height: 1;
+    margin-bottom: 30px;
+    animation: blink 1s infinite;
+}
+
+/* Second Card for Info Section */
+#info-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-items: center;
+    margin-top: -20px;
+    background: linear-gradient(135deg, #517a8a, #1d4059);
+    padding: 30px;
+    width: 86vw;
+    max-width: 670px;
+    color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1; 
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.info-text h2 {
+    margin: 5px 0 15px 0;
+    font-size: 24px; 
+}
+
+.info-text h3,
+.info-text h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.btn-remind {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #6EC3B1; 
+    color: #2c4c67;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+}
+
+.btn-remind:hover {
+    background-color: #5aa390;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    #timer {
+        flex-wrap: wrap;
+    }
+    .time-section {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+    .separator {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .time-section {
+        width: 100%;
+    }
+    #info-card {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btns {
+        margin-top: 30px;
+    }
+}
