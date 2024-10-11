@@ -1,9 +1,25 @@
 :root {
-    --color1: #DDE6ED;
-    --color2: #9DB2BF;
-    --color3: #526D82;
-    --color4: #27374D;
-  }
+  --color1: #DDE6ED;
+  --color2: #9DB2BF;
+  --color3: #395063;
+  --color4: #27374D;
+  --size-header: 2.25rem;
+  --size-accordion-title: 1.25rem;
+  --size-accordion-content: 1rem;
+  --animation-speed: 100;
+  --slide-ease: cubic-bezier(0.86, 0, 0.07, 1);
+  --slide-duration: calc(400ms * 100 / var(--animation-speed));
+  --slide-delay: calc(450ms * 100 / var(--animation-speed));
+  --circle-duration: calc(900ms * 100 / var(--animation-speed));
+  /* Gradient Option 1 */
+--gradient1: linear-gradient(135deg, var(--color1), var(--color2));
+
+/* Gradient Option 2 */
+--gradient2: linear-gradient(90deg, var(--color2), var(--color3));
+
+/* Gradient Option 3 */
+--gradient3: linear-gradient(45deg, var(--color3), var(--color4));
+}
   
   * {
     margin: 0;
@@ -101,7 +117,7 @@
     position: absolute;
     height: 100%;
     z-index: 0;
-    opacity: 40%;
+    opacity: 90%;
     width: 100%;
     right: 0;
     object-fit: cover;
@@ -201,9 +217,11 @@
   /* Packages section */
 
   .Heading-Container {
+    width: 100%; /* Make it span the full width */
     text-align: center;
-    background-color: var(--color3);
     color: var(--color1);
+    padding: 40px 20px; /* Adjust padding as needed */
+    box-sizing: border-box;
   }
 
   .Heading-Container h1 {
@@ -212,16 +230,27 @@
 
   .Subscriptions-Container {
     display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally */
+    background: linear-gradient(to bottom, var(--color3), var(--color1));
+    padding: 20px;
+  }
+
+  /* Packages Wrapper */
+  .Packages-Wrapper {
+    display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 30px;
     flex-wrap: wrap;
-    background-color: var(--color3);
-    padding: 20px 0;
+    width: 100%; /* Ensure it takes full width */
+    padding: 20px 0; /* Adjust padding as needed */
+    box-sizing: border-box;
+    background: transparent; /* Maintain gradient from parent */
   }
   
   .package-card {
-    background-color: var(--color2);
+    background-color: var(--color1);
     color: var(--color4);
     width: 300px;
     border-radius: 5px;
@@ -240,6 +269,7 @@
   .package-card p {
     text-align: center;
     margin-bottom: 10px;
+    font-weight: 500;
   }
   
   .package-card ul {
@@ -296,7 +326,7 @@
   }
   
   .modal-content {
-    background-color: var(--color2);
+    background-color: var(--color1);
     padding: 20px;
     border-radius: 10px;
     width: 80%;
@@ -362,129 +392,182 @@
   }
   
   /* FAQ section */
-  .faq-section {
+  .FAQ-Section {
     background-color: var(--color4);
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    margin: 0;
+    padding: 2rem 2rem;
     color: var(--color1);
-    padding-bottom: 70px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1rem;
+  }
+  
+  .FAQ-Section > h1 {
+    font-size: var(--size-header);
+    margin-bottom: 1.25rem;
+    color: var(--color1);
     text-align: center;
   }
   
-  .faq-section h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+  .FAQ-Section .intro {
+    font-size: var(--size-accordion-content);
+    margin-bottom: 1rem;
+    text-align: center;
   }
   
-  .faq-section .intro {
-    font-size: 18px;
-    margin-bottom: 40px;
+  .FAQ-Section .intro a {
+    color: var(--color2);
+    text-decoration: none;
   }
   
-  .faq-section .intro a {
-    color: var(--color1);
+  ::selection {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .accordion {
+    position: relative;
+    --circle-x: 1.8rem;
+    --circle-y: 0;
+    --circle-r: 200%;
+    --circle-bg: #DDE6ED;
+    color: #242424;
+    background-color: var(--circle-bg);
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+    border-radius: min(8px, 0.5rem);
+  
+    display: grid;
+    grid-template-rows: 0fr 0fr;
+    transition-timing-function: var(--slide-ease);
+    transition-duration: 200ms, 200ms, var(--slide-duration);
+    transition-property: opacity, box-shadow, grid-template-rows;
+    transition-delay: 0ms, 0ms, var(--slide-delay);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+  }
+  
+  .accordion:not(:target):hover {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .accordion:not(:target):active {
+    opacity: 1;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .accordion,
+  .content {
+    overflow: hidden;
+  }
+  
+  .accordion:target {
+    --d: 90deg;
+    grid-template-rows: 0fr 1fr;
+    transition: grid-template-rows var(--slide-ease) var(--slide-duration) var(--slide-delay);
+  }
+  
+  .wrapper {
+    padding-block: 0 1.05rem;
+    padding-inline: 1.25rem;
+  }
+  
+  .content {
+    font-size: var(--size-accordion-content);
+    line-height: 140%;
+  }
+  
+  .content p {
+    margin-bottom: 1rem;
+  }
+  
+  .content a {
+    color: currentColor;
+    font-weight: 800;
     text-decoration: underline;
   }
   
-  .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
-  }
-
-  .faq-container h2 {
-    color: var(--color4);
+  .content :last-child {
+    margin-bottom: 0;
   }
   
-  .faq-item {
-    margin-bottom: 10px;
-  }
-  
-  .faq-item details {
-    background-color: var(--color2);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .faq-item summary {
-    list-style: none;
-    cursor: pointer;
+  .title a {
+    padding: 1rem 1.25rem;
+    font-size: var(--size-accordion-title);
+    font-weight: 800;
+    color: currentColor;
+    text-decoration: none;
     display: flex;
+    flex-direction: row;
     align-items: center;
   }
   
-  .faq-item summary::-webkit-details-marker {
-    display: none;
+  .title a::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid currentColor;
+    margin-right: 0.75rem;
+    transform: rotate(var(--d, 0deg));
+    transition: transform var(--slide-ease) var(--slide-duration) var(--slide-delay);
   }
   
-  .faq-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+  .accordion::before,
+  .accordion::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--circle-bg);
+    mix-blend-mode: difference;
+    transform-style: preserve-3d;
+    transition-timing-function: ease;
+    transition-property: opacity, clip-path, visibility;
+    pointer-events: none;
+    clip-path: circle(var(--r) at var(--circle-x) var(--circle-y));
+    border-radius: inherit;
+    z-index: 4;
   }
   
-  .faq-item summary h2 {
-    font-size: 17px;
-    margin: 0;
+  .accordion::before {
+    --r: 0%;
+    transition-delay: var(--circle-duration), var(--circle-duration), 0ms;
+    transition-duration: 0ms, var(--circle-duration), 0ms;
+    opacity: 0;
   }
   
-  .faq-item p {
-    margin: 10px 0 0 40px;
-    font-size: 14px;
-    color: #373737;
+  .accordion:target::before {
+    --r: var(--circle-r);
+    transition-delay: 0ms, 0ms, 0ms;
+    transition-duration: 0ms, var(--circle-duration), 0ms;
+    opacity: 1;
   }
   
-  /* Reviews section */
-  .reviews-section {
-    background-color: var(--color1);
-    padding: 50px 0;
-    text-align: center;
+  .accordion::after {
+    --r: var(--circle-r);
+    transition-delay: 0ms, 0ms, var(--circle-duration);
+    transition-duration: 0ms, var(--circle-duration), 0ms;
+    visibility: hidden;
+    opacity: 1;
   }
   
-  .reviews-section h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: var(--color4);
+  .accordion:target::after {
+    --r: 0%;
+    transition-delay: 0ms, 0ms, 0ms;
+    transition-duration: 0ms, 0ms, 0ms;
+    visibility: visible;
+    opacity: 0;
   }
   
-  .reviews-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  .title a:focus-visible {
+    background-color: var(--color3);
+    outline: none;
   }
   
-  .review-card {
+  .accordion:target .title a:focus-visible {
     background-color: var(--color2);
-    color: var(--color4);
-    width: 300px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
-    text-align: left;
-  }
-  
-  .user-details {
-    margin-bottom: 10px;
-  }
-  
-  .user-details .name {
-    font-weight: bold;
-    font-size: 16px;
-    margin: 0;
-  }
-  
-  .user-details .designation {
-    font-size: 14px;
-    margin: 0;
-    color: var(--color3);
-  }
-  
-  .review-content h4 {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .review-content p {
-    font-size: 14px;
   }
   
   /* Contact form modal */
@@ -529,6 +612,10 @@
     border: 1px solid var(--color2);
     border-radius: 5px;
     font-size: 16px;
+  }
+
+  textarea#message {
+    min-height: 300px;
   }
   
   .form-button {
@@ -582,15 +669,6 @@
     }
   
     .package-card {
-      width: 100%;
-    }
-  
-    .faq-container {
-      padding: 0 20px;
-    }
-  
-    .reviews-container {
-      flex-direction: column;
-      align-items: center;
+      width: 90%;
     }
   }  
