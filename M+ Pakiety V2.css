@@ -1,0 +1,596 @@
+:root {
+    --color1: #DDE6ED;
+    --color2: #9DB2BF;
+    --color3: #526D82;
+    --color4: #27374D;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* General styles */
+  body {
+    background-color: var(--color1);
+    color: var(--color4);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, p {
+    margin: 0;
+  }
+  
+  /* Hero section */
+  .Text_Image_Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 120px;
+    background-color: var(--color4);
+    color: var(--color1);
+    position: relative;
+    height: 100vh;
+  }
+  
+  .Text-Container {
+    max-width: 50%;
+    z-index: 1;
+  }
+  
+  .Text-Container h1 {
+    font-size: 54px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .Text-Container h2, .Text-Container h3 {
+    font-weight: bold;
+  }
+  
+  .Text-Container p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .demo-button {
+    background-color: var(--color3);
+    color: var(--color1);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .demo-button:hover {
+    background-color: #647d91;
+  }
+  
+  .illustration {
+    width: 40%;
+    position: relative;
+  }
+  
+  .Image_Frame {
+    position: relative;
+    width: 100%;
+  }
+  
+  .Image_Frame img.background {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .Image_Frame img.frame {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+  }
+  
+  .Tło_Mentzen {
+    position: absolute;
+    height: 100%;
+    z-index: 0;
+    opacity: 40%;
+    width: 100%;
+    right: 0;
+    object-fit: cover;
+    top: 0;
+  }
+  
+  .pulse-shine {
+    animation: pulse 2s infinite;
+    color: var(--color1);
+    font-weight: bold;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .Text_Image_Container {
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+  
+    .Text-Container {
+      max-width: 100%;
+      margin-bottom: 40px;
+    }
+  
+    .illustration {
+      width: 100%;
+    }
+  }
+  
+  /* Padding classes */
+  [class*="Padding-"] {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  
+  .Padding-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .Padding-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .Padding-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .Padding-40 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+  .Padding-50 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .Padding-60 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .Padding-70 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+  .Padding-80 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  @media (max-width: 768px) {
+    [class*="Padding-"] {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  
+  /* Packages section */
+
+  .Heading-Container {
+    text-align: center;
+    background-color: var(--color3);
+    color: var(--color1);
+  }
+
+  .Heading-Container h1 {
+    font-size: 42px;
+  }
+
+  .Subscriptions-Container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    background-color: var(--color3);
+    padding: 20px 0;
+  }
+  
+  .package-card {
+    background-color: var(--color2);
+    color: var(--color4);
+    width: 300px;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .package-card h1, .package-card h2, .package-card h3, .package-card h4 {
+    text-align: center;
+  }
+  
+  .package-card p {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .package-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .package-card li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .package-card li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--color4);
+  }
+  
+  .nice-button {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color4);
+    color: var(--color1);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .nice-button:hover {
+    background-color: var(--color3);
+  }
+  
+  /* Modals */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(39, 55, 77, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .modal-content {
+    background-color: var(--color2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: var(--color4);
+  }
+  
+  .modal-content h2 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .modal-content h3 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .modal-content p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .modal-content .close {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--color4);
+    color: var(--color1);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .modal-content .option {
+    margin-bottom: 20px;
+    display: grid;
+    gap: 5px;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .modal-content hr {
+    border: none;
+    border-top: 1px solid var(--color4);
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  #modal1:checked ~ .modal1,
+  #modal2:checked ~ .modal2,
+  #modal3:checked ~ .modal3 {
+    display: flex;
+  }
+  
+  /* FAQ section */
+  .faq-section {
+    background-color: var(--color4);
+    color: var(--color1);
+    padding-bottom: 70px;
+    text-align: center;
+  }
+  
+  .faq-section h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+  
+  .faq-section .intro {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .faq-section .intro a {
+    color: var(--color1);
+    text-decoration: underline;
+  }
+  
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .faq-container h2 {
+    color: var(--color4);
+  }
+  
+  .faq-item {
+    margin-bottom: 10px;
+  }
+  
+  .faq-item details {
+    background-color: var(--color2);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .faq-item summary h2 {
+    font-size: 17px;
+    margin: 0;
+  }
+  
+  .faq-item p {
+    margin: 10px 0 0 40px;
+    font-size: 14px;
+    color: #373737;
+  }
+  
+  /* Reviews section */
+  .reviews-section {
+    background-color: var(--color1);
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .reviews-section h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: var(--color4);
+  }
+  
+  .reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .review-card {
+    background-color: var(--color2);
+    color: var(--color4);
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+  
+  .user-details {
+    margin-bottom: 10px;
+  }
+  
+  .user-details .name {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .user-details .designation {
+    font-size: 14px;
+    margin: 0;
+    color: var(--color3);
+  }
+  
+  .review-content h4 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .review-content p {
+    font-size: 14px;
+  }
+  
+  /* Contact form modal */
+  #contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(39, 55, 77, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #contact-modal:target {
+    display: flex;
+  }
+  
+  .contact-form-card {
+    background-color: var(--color1);
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .contact-form h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 24px;
+    text-align: center;
+    color: var(--color4);
+    letter-spacing: 0.5px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--color2);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color4);
+    color: var(--color1);
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+  
+  .form-button:hover {
+    background-color: var(--color3);
+  }
+  
+  .closeV2 {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .closeV2 a {
+    color: var(--color1);
+    text-decoration: none;
+  }
+  
+  .closeV2 a:hover {
+    color: var(--color2);
+  }
+  
+  @media (max-width: 768px) {
+    .Text_Image_Container {
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+  
+    .Text-Container {
+      max-width: 100%;
+      margin-bottom: 40px;
+    }
+  
+    .illustration {
+      width: 100%;
+    }
+  
+    .package-card {
+      width: 100%;
+    }
+  
+    .faq-container {
+      padding: 0 20px;
+    }
+  
+    .reviews-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }  
