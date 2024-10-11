@@ -73,7 +73,7 @@
   
   .demo-button {
     background-color: var(--color3);
-    color: var(--color1);
+    color: var(--color1) !important;
     padding: 12px 24px;
     border: none;
     border-radius: 25px;
@@ -298,7 +298,7 @@
     width: 100%;
     padding: 10px;
     background-color: var(--color4);
-    color: var(--color1);
+    color: var(--color1) !important;
     border: none;
     border-radius: 5px;
     font-size: 16px;
