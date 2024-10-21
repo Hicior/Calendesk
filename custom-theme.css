@@ -87,7 +87,10 @@
   --linearSecondaryAccent: linear-gradient(#aebece, #5079a9);
   --radialPrimarySecondary: radial-gradient(#13334d, #aebece);
   --radialPrimaryAccent: radial-gradient(#13334d, #5079a9);
-  --radialSecondaryAccent: radial-gradient(#aebece, #5079a9);  
+  --radialSecondaryAccent: radial-gradient(#aebece, #5079a9);
+
+  --brace-color: #5079a9;
+  --brace-height: 20px;
 }
 
 * {

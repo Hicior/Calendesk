@@ -118,7 +118,12 @@
 }
 
 #Mentzen-PrawoIPodatki.package-card {
-  background-color: var(--primary20);
+  background: linear-gradient(
+    45deg,
+    var(--primary30),
+    var(--accent10),
+    var(--secondary10)
+  );
 }
 
 .package-card h1, .package-card h2, .package-card h3, .package-card h4 {
@@ -238,25 +243,27 @@
 .modal-content {
   background-color: var(--background);
   padding: 20px;
-  border-radius: 10px;
-  width: 80%;
+  border-radius: 16px;
+  width: 95%;
   max-width: 700px;
   text-align: center;
   color: var(--text);
 }
 
 .modal-content h2 {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 600;
 }
 
 .modal-content h3 {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
 }
 
 .modal-content p {
   font-size: 18px;
+  font-weight: 500;
   margin: 10px 0;
 }
 
@@ -264,24 +271,24 @@
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  background: var(--primary);
+  background: var(--text60);
   color: var(--background);
   text-transform: uppercase;
   cursor: pointer;
   border: none;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
 }
 
 .modal-content .option {
   margin-bottom: 20px;
+  margin-top: 20px;
   display: grid;
   gap: 5px;
   align-content: center;
   justify-items: center;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .modal-content hr {
@@ -352,16 +359,16 @@ input[type="checkbox"] {
   cursor: pointer;
   justify-content: space-between;
   flex-direction: row-reverse;
-  padding: 20px;
+  padding: 16px 20px;
   align-items: center;
   font-weight: 600;
 }
 .accordion-item .accordion-item-desc {
   display: none;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 22px;
   font-weight: 500;
-  color: var(--text70);
+  color: var(--text80);
   border-top: 1px dashed #ccc;
   padding: 10px 20px 20px;
   line-height: 1.7;
@@ -380,12 +387,12 @@ input[type="checkbox"] {
   ~ .accordion-item-title
   .icon:after {
   content: "-";
-  font-size: 20px;
+  font-size: 26px;
   color: var(--accent);
 }
 .accordion-item input[type="checkbox"] ~ .accordion-item-title .icon:after {
   content: "+";
-  font-size: 20px;
+  font-size: 26px;
   color: var(--accent);
 }
 .accordion-item:first-child {
@@ -416,7 +423,7 @@ input[type="checkbox"] {
 
 .contact-form-card {
   background-color: var(--background);
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 20px;
   width: 100%;
 }
@@ -424,7 +431,7 @@ input[type="checkbox"] {
 .contact-form h2 {
   margin-top: 0;
   margin-bottom: 5px;
-  font-size: 24px;
+  font-size: 32px;
   text-align: center;
   color: var(--text);
   letter-spacing: 0.5px;
@@ -515,4 +522,79 @@ textarea#message {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.h-divider {
+  margin: auto;
+  margin-top: 60px;
+  width: 80%;
+  position: relative;
+}
+
+.h-divider .shadow {
+  overflow: hidden;
+  height: 20px;
+}
+
+.h-divider .shadow:after {
+  content: '';
+  display: block;
+  margin: -25px auto 0;
+  width: 100%;
+  height: 25px;
+  border-radius: 125px/12px;
+  box-shadow: 0 0 8px black;
+}
+
+.brace {
+  width: auto;
+  min-width: 35px;
+  padding-bottom: 20px;
+  font-size: 2em;
+  line-height: 2em;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 15px 15px;
+  border: none;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 0 0, rgba(52, 152, 219, 0) 14.5px, var(--brace-color) 15.5px, var(--brace-color) 19.5px, rgba(52, 152, 219, 0) 20.5px),
+    radial-gradient(circle at 35px 0, rgba(52, 152, 219, 0) 14.5px, var(--brace-color) 15.5px, var(--brace-color) 19.5px, rgba(52, 152, 219, 0) 20.5px);
+  background-size: 35px 20px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  text-transform: lowercase;
+  font-style: italic;
+  color: var(--brace-color);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+  overflow: visible;
+}
+
+.brace::before {
+  width: 50%;
+  border-top: 5px solid var(--brace-color);
+  border-left: 1px solid transparent; /* dostosuj według potrzeb */
+  border-top-left-radius: 20% 30px;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: var(--brace-height);
+  left: -15px;
+  box-sizing: border-box;
+  margin-top: -5px;
+}
+
+.brace::after {
+  width: 50%;
+  border-top: 5px solid var(--brace-color);
+  border-right: 1px solid transparent; /* dostosuj według potrzeb */
+  border-top-right-radius: 20% 30px;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: var(--brace-height);
+  right: -15px;
+  box-sizing: border-box;
+  margin-top: -5px;
 }
