@@ -1,187 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendesk</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.Text_Image_Container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 80px 120px;
-  background-color: #13334d;
-}
-
-.Text-Container {
-  max-width: 50%;
-}
-
-.Text-Container h2 {
-  font-size: 14px;
-  text-transform: uppercase;
-  margin-bottom: 0;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.Text-Container h1 {
-  font-size: 48px;
-  font-weight: bold;
-  color: #fff;
-  margin: 10px 0;
-  margin-top: 5px;
-  position: relative;
-  z-index: 1;
-}
-
-.Text-Container p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #c7c7c7;
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 1;
-}
-
-.Text-Container h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.demo-button {
-  background-color: #000000;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.demo-button:hover {
-  background-color: #333;
-}
-
-.illustration {
-  width: 40%;
-  position: relative;
-}
-
-.Image_Frame {
-  position: relative;
-  width: 100%;
-}
-
-.Image_Frame img.background {
-  width: 100%;
-  height: auto;
-  display: block;
-  position: relative;
-  z-index: 2;
-}
-
-.Image_Frame img.frame {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: 100%;
-  height: auto;
-  z-index: 1;
-}
-
-.Img_Shape_Left {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: auto;
-  height: auto;
-  max-height: 500px;
-  z-index: 0;
-}
-
-.Img_Shape_Right {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: auto;
-  height: auto;
-  max-height: 480px;
-  z-index: 0;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.pulse-shine {
-  animation: pulse 2s infinite;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .Text_Image_Container {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-  
-  .Text-Container {
-    max-width: 100%;
-    margin-bottom: 40px;
-  }
-  
-  .illustration {
-    width: 100%;
-  }
-}
-    </style>
+    :root {
+        --text: #050606;
+        --background: #f6f9f9;
+        --primary: #13334d;
+        --secondary: #aebece;
+        --accent: #48537f;
+        --font-family: 'Roboto', sans-serif;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--background);
+        color: var(--text);
+        font-family: var(--font-family);
+    }
+    .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        text-align: left;
+        position: relative;
+    }
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--secondary);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .badge span {
+        margin-left: 5px;
+    }
+    .headline {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
+    .subheadline {
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 30px;
+    }
+    .cta-buttons {
+        margin-bottom: 30px;
+    }
+    .cta-buttons button {
+        padding: 15px 30px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-right: 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cta-buttons .primary-btn {
+        background-color: var(--text);
+        color: var(--background);
+    }
+    .cta-buttons .secondary-btn {
+        background-color: var(--background);
+        color: var(--text);
+        border: 1px solid var(--text);
+    }
+    .cta-buttons .primary-btn:hover {
+        background-color: var(--accent);
+    }
+    .cta-buttons .secondary-btn:hover {
+        background-color: var(--secondary);
+    }
+    .feature-list {
+        list-style-type: disc;
+        padding-left: 20px;
+        font-size: 16px;
+    }
+    .hero-image {
+        position: relative;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    .hero-image img {
+        width: 60%;
+        border-radius: 20px;
+    }
+    .ui-elements {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 60%;
+        transform: translateX(-50%);
+    }
+    .ui-card {
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 14px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .invoice-card {
+        top: -40px;
+        left: 10%;
+        width: 200px;
+        animation: float 6s ease-in-out infinite;
+    }
+    .orders-review-card {
+        top: 20%;
+        right: -30px;
+        width: 220px;
+        animation: float 6s ease-in-out infinite alternate;
+    }
+    .customers-card {
+        bottom: -40px;
+        left: 20%;
+        width: 150px;
+        animation: float 5s ease-in-out infinite;
+    }
+    .project-listing-card {
+        bottom: 10%;
+        right: 15%;
+        width: 160px;
+        animation: float 7s ease-in-out infinite alternate;
+    }
+    .interviewers-card {
+        top: -30px;
+        right: 30%;
+        width: 180px;
+        animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+    .ui-card h4 {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+    }
+    .ui-card p {
+        margin: 5px 0;
+    }
+    .progress-bar {
+        background-color: var(--secondary);
+        border-radius: 5px;
+        overflow: hidden;
+        height: 8px;
+        margin-bottom: 10px;
+    }
+    .progress {
+        height: 100%;
+        background-color: var(--accent);
+    }
+    .cta-buttons button:hover {
+        box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    }
+</style>
 </head>
 <body>
 
-    <section class="Text_Image_Container">
-        <div class="Text-Container">
-            <h2>SUBSKRYPCJA</h2>
-            <h1>Mentzen+</h1>
-            <h3>Stała opieka podatkowa nad Twoją firmą</h3>
-            <p>Mentzen+ to koniec ograniczeń. Gdy pojawia się problem, wyciągasz telefon i dzwonisz – a my go rozwiązujemy. <span class="pulse-shine">Już od 349 zł miesięcznie</span> masz nielimitowaną liczbę konsultacji, audyty, webinary, szkolenia, bazę wiedzy i zniżki na inne nasze usługi.</p>
-            <button class="demo-button">Sprawdź nasze pakiety</button>
+<section class="hero">
+    <div class="badge">
+        <span>🚩🚀</span>
+        <span>2840 high-performing teams</span>
+    </div>
+    <h1 class="headline">Streamlined efficiency, all in one place.</h1>
+    <p class="subheadline">Optimize your workflow and manage operations seamlessly with our all-in-one platform designed for teams of all sizes.</p>
+    <div class="cta-buttons">
+        <button class="primary-btn">Try for Free</button>
+        <button class="secondary-btn">Book a Demo</button>
+    </div>
+    <ul class="feature-list">
+        <li>Custom CRMs & Operations tools</li>
+        <li>Customer portals & management</li>
+        <li>Other business applications</li>
+    </ul>
+    <div class="hero-image">
+        <img src="images/Sławek.webp" alt="Collaboration Image">
+        <div class="ui-elements">
+            <div class="ui-card invoice-card">
+                <h4>Invoice Order #102</h4>
+                <p>Amount: $3,400.56</p>
+                <p>Status: <strong>Paid</strong></p>
+                <p>Date: Jan 22, 2024</p>
+                <button>Share</button>
+                <button>Send Invoice</button>
+            </div>
+            <div class="ui-card orders-review-card">
+                <h4>Orders Review</h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+                <p>Received Orders: 80%</p>
+                <p>Completed Projects: 56%</p>
+                <p>Out for Tender: 32%</p>
+                <p>Awaiting Projects: 12%</p>
+            </div>
+            <div class="ui-card customers-card">
+                <h4>Customers</h4>
+                <p style="color: var(--accent);">2,049 Customers Available</p>
+            </div>
+            <div class="ui-card project-listing-card">
+                <h4>Task on Progress</h4>
+                <p>Project Listing</p>
+            </div>
+            <div class="ui-card interviewers-card">
+                <h4>Interviewers</h4>
+                <p>22 Completed Interviews</p>
+            </div>
         </div>
-        <div class="illustration">
-          <div class="Image_Frame">
-            <img src="images/Sławek.webp" alt="Tło" class="background">
-            <img src="images/Ramka.svg" alt="Ramka" class="frame">
-          </div>
-        </div>
-        <img src="images/Left_Blue_Shape.svg" class="Img_Shape_Left">
-        <img src="images/Blue_Right_Shape.svg" class="Img_Shape_Right">
-    </section>
+    </div>
+</section>
 
 </body>
 </html>

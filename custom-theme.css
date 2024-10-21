@@ -1,0 +1,286 @@
+:root {
+  --text: #0d1317;
+  --background: #f9fafc;
+  --primary: #13334d;
+  --secondary: #9dbcd5;
+  --accent: #5079a9;
+
+  --text5: hsl(204, 28%, 7%, 5%);
+  --text10: hsl(204, 28%, 7%, 10%);
+  --text15: hsl(204, 28%, 7%, 15%);
+  --text20: hsl(204, 28%, 7%, 20%);
+  --text25: hsl(204, 28%, 7%, 25%);
+  --text30: hsl(204, 28%, 7%, 30%);
+  --text35: hsl(204, 28%, 7%, 35%);
+  --text40: hsl(204, 28%, 7%, 40%);
+  --text45: hsl(204, 28%, 7%, 45%);
+  --text50: hsl(204, 28%, 7%, 50%);
+  --text55: hsl(204, 28%, 7%, 55%);
+  --text60: hsl(204, 28%, 7%, 60%);
+  --text65: hsl(204, 28%, 7%, 65%);
+  --text70: hsl(204, 28%, 7%, 70%);
+  --text75: hsl(204, 28%, 7%, 75%);
+  --text80: hsl(204, 28%, 7%, 80%);
+  --text85: hsl(204, 28%, 7%, 85%);
+  --text90: hsl(204, 28%, 7%, 90%);
+  --text95: hsl(204, 28%, 7%, 95%);
+  --primary5: hsl(207, 60%, 19%, 5%);
+  --primary10: hsl(207, 60%, 19%, 10%);
+  --primary15: hsl(207, 60%, 19%, 15%);
+  --primary20: hsl(207, 60%, 19%, 20%);
+  --primary25: hsl(207, 60%, 19%, 25%);
+  --primary30: hsl(207, 60%, 19%, 30%);
+  --primary35: hsl(207, 60%, 19%, 35%);
+  --primary40: hsl(207, 60%, 19%, 40%);
+  --primary45: hsl(207, 60%, 19%, 45%);
+  --primary50: hsl(207, 60%, 19%, 50%);
+  --primary55: hsl(207, 60%, 19%, 55%);
+  --primary60: hsl(207, 60%, 19%, 60%);
+  --primary65: hsl(207, 60%, 19%, 65%);
+  --primary70: hsl(207, 60%, 19%, 70%);
+  --primary75: hsl(207, 60%, 19%, 75%);
+  --primary80: hsl(207, 60%, 19%, 80%);
+  --primary85: hsl(207, 60%, 19%, 85%);
+  --primary90: hsl(207, 60%, 19%, 90%);
+  --primary95: hsl(207, 60%, 19%, 95%);
+  --secondary5: hsl(207, 40%, 73%, 5%);
+  --secondary10: hsl(207, 40%, 73%, 10%);
+  --secondary15: hsl(207, 40%, 73%, 15%);
+  --secondary20: hsl(207, 40%, 73%, 20%);
+  --secondary25: hsl(207, 40%, 73%, 25%);
+  --secondary30: hsl(207, 40%, 73%, 30%);
+  --secondary35: hsl(207, 40%, 73%, 35%);
+  --secondary40: hsl(207, 40%, 73%, 40%);
+  --secondary45: hsl(207, 40%, 73%, 45%);
+  --secondary50: hsl(207, 40%, 73%, 50%);
+  --secondary55: hsl(207, 40%, 73%, 55%);
+  --secondary60: hsl(207, 40%, 73%, 60%);
+  --secondary65: hsl(207, 40%, 73%, 65%);
+  --secondary70: hsl(207, 40%, 73%, 70%);
+  --secondary75: hsl(207, 40%, 73%, 75%);
+  --secondary80: hsl(207, 40%, 73%, 80%);
+  --secondary85: hsl(207, 40%, 73%, 85%);
+  --secondary90: hsl(207, 40%, 73%, 90%);
+  --secondary95: hsl(207, 40%, 73%, 95%);
+  --accent5: hsl(212, 36%, 49%, 5%);
+  --accent10: hsl(212, 36%, 49%, 10%);
+  --accent15: hsl(212, 36%, 49%, 15%);
+  --accent20: hsl(212, 36%, 49%, 20%);
+  --accent25: hsl(212, 36%, 49%, 25%);
+  --accent30: hsl(212, 36%, 49%, 30%);
+  --accent35: hsl(212, 36%, 49%, 35%);
+  --accent40: hsl(212, 36%, 49%, 40%);
+  --accent45: hsl(212, 36%, 49%, 45%);
+  --accent50: hsl(212, 36%, 49%, 50%);
+  --accent55: hsl(212, 36%, 49%, 55%);
+  --accent60: hsl(212, 36%, 49%, 60%);
+  --accent65: hsl(212, 36%, 49%, 65%);
+  --accent70: hsl(212, 36%, 49%, 70%);
+  --accent75: hsl(212, 36%, 49%, 75%);
+  --accent80: hsl(212, 36%, 49%, 80%);
+  --accent85: hsl(212, 36%, 49%, 85%);
+  --accent90: hsl(212, 36%, 49%, 90%);
+  --accent95: hsl(212, 36%, 49%, 95%);
+
+  --linearPrimarySecondary: linear-gradient(#13334d, #aebece);
+  --linearPrimaryAccent: linear-gradient(#13334d, #5079a9);
+  --linearSecondaryAccent: linear-gradient(#aebece, #5079a9);
+  --radialPrimarySecondary: radial-gradient(#13334d, #aebece);
+  --radialPrimaryAccent: radial-gradient(#13334d, #5079a9);
+  --radialSecondaryAccent: radial-gradient(#aebece, #5079a9);  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General styles */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+}
+
+small, a, li, table {
+  line-height: 2;
+  margin: 0;
+}
+
+p {
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Padding classes for top and bottom */
+.Padding-TB-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .Padding-TB-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .Padding-TB-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .Padding-TB-40 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+  .Padding-TB-50 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .Padding-TB-60 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .Padding-TB-70 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+  .Padding-TB-80 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .Padding-TB-90 {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+  
+  .Padding-TB-100 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  
+  .Padding-TB-120 {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  
+  .Padding-TB-140 {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+  
+  .Padding-TB-160 {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+  
+  /* Padding classes for left and right */
+  .Padding-LR-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .Padding-LR-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .Padding-LR-30 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  .Padding-LR-40 {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  .Padding-LR-50 {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .Padding-LR-60 {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  
+  .Padding-LR-70 {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+  
+  .Padding-LR-80 {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  
+  .Padding-LR-90 {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+  
+  .Padding-LR-100 {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  
+  .Padding-LR-120 {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+  
+  .Padding-LR-140 {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+  
+  .Padding-LR-160 {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
+
+/* Media query for tablets and small desktops */
+@media (max-width: 1024px) {
+    [class*="Padding-LR-"] {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  
+    [class*="Padding-TB-"] {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+}
+  
+/* Media query for tablets */
+@media (max-width: 768px) {
+    [class*="Padding-LR-"] {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  
+    [class*="Padding-TB-"] {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+}
+  
+/* Media query for mobile devices */
+@media (max-width: 480px) {
+    [class*="Padding-LR-"] {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    [class*="Padding-TB-"] {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+}
+  
