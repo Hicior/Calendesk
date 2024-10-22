@@ -75,7 +75,7 @@
     padding: 30px;
     width: 86vw;
     max-width: 670px;
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1; 
 }

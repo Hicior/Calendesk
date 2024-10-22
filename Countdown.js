@@ -1,6 +1,6 @@
 (function () {
   // Set the date and time of the webinar
-  var webinarDate = new Date("2024-10-09T16:00:00");
+  var webinarDate = new Date("2024-10-23T18:00:00");
 
   // Function to update the countdown
   function updateCountdown() {
