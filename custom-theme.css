@@ -89,7 +89,7 @@
   --radialPrimaryAccent: radial-gradient(#13334d, #5079a9);
   --radialSecondaryAccent: radial-gradient(#aebece, #5079a9);
 
-  --brace-color: #5079a9;
+  --brace-color: #000000;
   --brace-height: 20px;
 }
 

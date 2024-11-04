@@ -6,7 +6,7 @@
   background-color: var(--background);
   color: var(--text);
   position: relative;
-  height: 100vh; 
+  height: 100vh;
   gap: 40px;
 }
 
@@ -37,9 +37,42 @@
   margin-bottom: 50px;
 }
 
+.card {
+  position: absolute;
+  width: 220px;
+  background-color: #fff; /* You can replace this with a design-specific variable */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card.top-left {
+  top: -80px; /* Positions half of the card outside the image */
+  left: -40px;
+}
+
+.card.bottom-right {
+  bottom: -100px;
+  right: 30px;
+}
+
 .illustration {
   width: 50%;
   position: relative;
+  overflow: visible; /* Ensures cards can extend beyond the image */
 }
 
 .illustration img {
@@ -69,7 +102,6 @@
     opacity: 1;
   }
 }
-
 
 /* Packages section */
 .Heading-Container {
@@ -103,17 +135,25 @@
   background-color: var(--background);
   color: var(--text);
   width: 400px;
-  border-radius: 5px;
   padding: 20px;
   box-sizing: border-box;
-  box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 16px;
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-#Mentzen-Podatki.package-card, #Mentzen-Prawo.package-card {
+.package-card.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#Mentzen-Podatki.package-card,
+#Mentzen-Prawo.package-card {
   background-color: var(--secondary10);
 }
 
@@ -126,7 +166,10 @@
   );
 }
 
-.package-card h1, .package-card h2, .package-card h3, .package-card h4 {
+.package-card h1,
+.package-card h2,
+.package-card h3,
+.package-card h4 {
   text-align: center;
 }
 
@@ -161,7 +204,7 @@
 }
 
 .package-card li::before {
-  content: '✔';
+  content: "✔";
   color: var(--accent);
   font-weight: 700;
   font-size: 18px;
@@ -248,6 +291,7 @@
   max-width: 700px;
   text-align: center;
   color: var(--text);
+  position: relative;
 }
 
 .modal-content h2 {
@@ -437,7 +481,8 @@ input[type="checkbox"] {
   letter-spacing: 0.5px;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -469,7 +514,7 @@ textarea#message {
 
 .closeV2 {
   position: absolute;
-  top: 10px;
+  top: -5px;
   right: 20px;
   font-size: 36px;
   font-weight: bold;
@@ -499,6 +544,10 @@ textarea#message {
   .illustration {
     width: 100%;
   }
+
+  .card {
+    display: none;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -524,6 +573,7 @@ textarea#message {
   }
 }
 
+/* Dividers */
 .h-divider {
   margin: auto;
   margin-top: 60px;
@@ -537,7 +587,7 @@ textarea#message {
 }
 
 .h-divider .shadow:after {
-  content: '';
+  content: "";
   display: block;
   margin: -25px auto 0;
   width: 100%;
@@ -558,9 +608,20 @@ textarea#message {
   margin: 0 15px 15px;
   border: none;
   background-color: transparent;
-  background-image: 
-    radial-gradient(circle at 0 0, rgba(52, 152, 219, 0) 14.5px, var(--brace-color) 15.5px, var(--brace-color) 19.5px, rgba(52, 152, 219, 0) 20.5px),
-    radial-gradient(circle at 35px 0, rgba(52, 152, 219, 0) 14.5px, var(--brace-color) 15.5px, var(--brace-color) 19.5px, rgba(52, 152, 219, 0) 20.5px);
+  background-image: radial-gradient(
+      circle at 0 0,
+      rgba(52, 152, 219, 0) 14.5px,
+      var(--brace-color) 15.5px,
+      var(--brace-color) 19.5px,
+      rgba(52, 152, 219, 0) 20.5px
+    ),
+    radial-gradient(
+      circle at 35px 0,
+      rgba(52, 152, 219, 0) 14.5px,
+      var(--brace-color) 15.5px,
+      var(--brace-color) 19.5px,
+      rgba(52, 152, 219, 0) 20.5px
+    );
   background-size: 35px 20px;
   background-position: center bottom;
   background-repeat: no-repeat;
