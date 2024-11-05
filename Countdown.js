@@ -1,13 +1,38 @@
 (function () {
   // Set the date and time of the webinar
-  var webinarDate = new Date("2024-10-23T18:00:00");
+  var webinarDate = new Date("2024-11-05T18:00:00");
+
+  // Variable for 30 minutes in milliseconds
+  var thirtyMinutes = 30 * 60 * 1000;
+
+  // Variables to hold elements
+  var liveLabel;
+  var countdownMessage;
+  var timerElement;
 
   // Function to update the countdown
   function updateCountdown() {
     var now = new Date();
     var timeRemaining = webinarDate - now;
 
+    // Get elements if not already retrieved
+    if (!liveLabel) {
+      liveLabel = document.querySelector(".live-label");
+    }
+    if (!countdownMessage) {
+      countdownMessage = document.getElementById("countdown-message");
+    }
+    if (!timerElement) {
+      timerElement = document.getElementById("timer");
+    }
+
     if (timeRemaining > 0) {
+      // Hide the live label
+      if (liveLabel) liveLabel.style.display = "none";
+      if (countdownMessage)
+        countdownMessage.innerText = "Do rozpoczęcia webinaru pozostało:";
+
+      // Calculate time components
       var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
       var hours = Math.floor(
         (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -35,11 +60,25 @@
         minutesElement.innerHTML = minutes;
         secondsElement.innerHTML = seconds;
       }
+
+      // Ensure the timer is visible
+      if (timerElement) timerElement.style.display = "flex";
+    } else if (timeRemaining > -thirtyMinutes) {
+      // Show the live label
+      if (liveLabel) liveLabel.style.display = "block";
+      if (countdownMessage)
+        countdownMessage.innerText = "Webinar się rozpoczął!";
+
+      // Hide the timer if you don't want to display zeros
+      if (timerElement) timerElement.style.display = "none";
     } else {
+      // More than 30 minutes have passed since webinarDate
       clearInterval(countdownInterval);
-      var countdownElement = document.getElementById("countdown");
-      if (countdownElement) {
-        countdownElement.innerHTML = "<p>Webinar się rozpoczął!</p>";
+      var countdownContainers = document.getElementsByClassName(
+        "Countdown-Container"
+      );
+      for (var i = 0; i < countdownContainers.length; i++) {
+        countdownContainers[i].style.display = "none";
       }
     }
   }

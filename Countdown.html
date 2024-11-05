@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown</title>
-    <link rel="stylesheet" href="https://hicior.github.io/Calendesk/Countdown.css">
+    <link rel="stylesheet" href="Countdown.css">
 </head>
 <style>
 * {
@@ -23,9 +23,11 @@ body, html {
 }
 </style>
 <body>
+
     <div class="Countdown-Container">
         <div id="countdown">
-            <h1>Do rozpoczęcia webinaru pozostało:</h1>
+          <div class="live-label">LIVE</div>
+          <h1 id="countdown-message">Do rozpoczęcia webinaru pozostało:</h1>
             <div id="timer">
                 <div class="time-section">
                     <span id="days">01</span>
@@ -51,16 +53,17 @@ body, html {
     
         <div id="info-card">
             <div class="info-text">
-                <h2>Co to jest SEO? Jak może pomóc w rozwoju Twojej firmy?</h2>
-                <h3>23.10.2024 18:00</h3>
-                <h4>Paweł Wołoszyn</h4>
+                <h2>Twój klient w Internecie - jak do niego dotrzeć?</h2>
+                <h3>6.11.2024 18:00</h3>
+                <h4>Jakub Bendlewski</h4>
             </div>
             <div class="btns">
-            <a href="https://youtube.com/live/jVqN6jyK_pU?feature=share" class="btn-remind" target="_blank">Zobacz webinar</a>
+            <a href="https://youtube.com/live/skvR0TpLieA?feature=share" class="btn-remind" target="_blank">Zobacz webinar</a>
             </div>
         </div>
 
-    </div>    
+    </div>
+
     <script src="Countdown.js"></script>        
 </body>
 </html>
