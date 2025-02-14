@@ -1,6 +1,6 @@
 (function () {
   // Set the date and time of the webinar
-  var webinarDate = new Date("2024-11-05T18:00:00");
+  var webinarDate = new Date("2025-02-20T00:00:00");
 
   // Variable for 30 minutes in milliseconds
   var thirtyMinutes = 30 * 60 * 1000;
@@ -30,7 +30,7 @@
       // Hide the live label
       if (liveLabel) liveLabel.style.display = "none";
       if (countdownMessage)
-        countdownMessage.innerText = "Do rozpoczęcia webinaru pozostało:";
+        countdownMessage.innerText = "TYLKO TYLE CZASU ZOSTAŁO NA ZMIANĘ FORMY OPODATKOWANIA:";
 
       // Calculate time components
       var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
