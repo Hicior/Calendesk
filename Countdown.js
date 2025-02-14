@@ -28,7 +28,7 @@
 
     if (timeRemaining > 0) {
       // Hide the live label
-      if (liveLabel) liveLabel.style.display = "none";
+      if (liveLabel) liveLabel.style.visibility = "hidden";
       if (countdownMessage)
         countdownMessage.innerText = "TYLKO TYLE CZASU ZOSTAŁO NA ZMIANĘ FORMY OPODATKOWANIA:";
 
@@ -62,15 +62,15 @@
       }
 
       // Ensure the timer is visible
-      if (timerElement) timerElement.style.display = "flex";
+      if (timerElement) timerElement.style.visibility = "visible";
     } else if (timeRemaining > -thirtyMinutes) {
       // Show the live label
-      if (liveLabel) liveLabel.style.display = "block";
+      if (liveLabel) liveLabel.style.visibility = "visible";
       if (countdownMessage)
         countdownMessage.innerText = "Webinar się rozpoczął!";
 
-      // Hide the timer if you don't want to display zeros
-      if (timerElement) timerElement.style.display = "none";
+      // Hide the timer
+      if (timerElement) timerElement.style.visibility = "hidden";
     } else {
       // More than 30 minutes have passed since webinarDate
       clearInterval(countdownInterval);
