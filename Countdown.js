@@ -6,7 +6,6 @@
   var thirtyMinutes = 30 * 60 * 1000;
 
   // Variables to hold elements
-  var liveLabel;
   var countdownMessage;
   var timerElement;
 
@@ -16,9 +15,6 @@
     var timeRemaining = webinarDate - now;
 
     // Get elements if not already retrieved
-    if (!liveLabel) {
-      liveLabel = document.querySelector(".live-label");
-    }
     if (!countdownMessage) {
       countdownMessage = document.getElementById("countdown-message");
     }
@@ -27,8 +23,6 @@
     }
 
     if (timeRemaining > 0) {
-      // Hide the live label
-      if (liveLabel) liveLabel.style.visibility = "hidden";
       if (countdownMessage)
         countdownMessage.innerText = "TYLKO TYLE CZASU ZOSTAŁO NA ZMIANĘ FORMY OPODATKOWANIA:";
 
@@ -64,8 +58,6 @@
       // Ensure the timer is visible
       if (timerElement) timerElement.style.visibility = "visible";
     } else if (timeRemaining > -thirtyMinutes) {
-      // Show the live label
-      if (liveLabel) liveLabel.style.visibility = "visible";
       if (countdownMessage)
         countdownMessage.innerText = "Webinar się rozpoczął!";
 
