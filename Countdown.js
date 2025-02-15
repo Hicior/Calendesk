@@ -24,7 +24,7 @@
 
     if (timeRemaining > 0) {
       if (countdownMessage)
-        countdownMessage.innerText = "TYLKO TYLE CZASU ZOSTAŁO NA ZMIANĘ FORMY OPODATKOWANIA:";
+        countdownMessage.innerText = "TYLKO TYLE CZASU ZOSTAŁO NA ZMIANĘ FORMY OPODATKOWANIA";
 
       // Calculate time components
       var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
