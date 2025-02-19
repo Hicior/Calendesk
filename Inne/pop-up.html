@@ -25,7 +25,8 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+            will-change: backdrop-filter, background-color;
         }
 
         .popup-overlay.visible {
@@ -50,6 +51,10 @@
             align-items: center;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            will-change: transform, opacity;
         }
 
         /* Add the overlay gradient */
@@ -126,7 +131,7 @@
             font-size: 19px;
             font-weight: 600;
             color: white;
-            margin: 1.5rem 0;
+            margin: 1.5rem 0 0 0;
             letter-spacing: 0.3px;
             background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             padding: 10px 20px;
@@ -305,37 +310,55 @@
         </div>
     </div>
     <script>
+        // Preload the background image
+        const preloadImage = new Image();
+        preloadImage.src = 'https://mentzen.pl/wp-content/uploads/2025/02/pop-up.svg';
+
         document.addEventListener('DOMContentLoaded', function() {
             const overlay = document.querySelector('.popup-overlay');
+            const popupCard = document.querySelector('.popup-card');
             
-            // Check if popup was already shown
+            // Show popup after 3 seconds
             if (!localStorage.getItem('popupShown')) {
-                // Wait for 1 minute (60000 milliseconds)
+                // Pre-hide the popup card
+                popupCard.style.opacity = '0';
+                popupCard.style.transform = 'translateY(-20px)';
+                
                 setTimeout(function() {
+                    // First make the overlay visible
                     overlay.style.display = 'flex';
-                    // Small delay to ensure display:flex is applied before adding the visible class
+                    
+                    // Force browser reflow
+                    void overlay.offsetWidth;
+                    
+                    // Then add visible class and animate the card
                     requestAnimationFrame(() => {
                         overlay.classList.add('visible');
+                        popupCard.style.opacity = '1';
+                        popupCard.style.transform = 'translateY(0)';
                     });
+                    
                     localStorage.setItem('popupShown', 'true');
-                }, 60000);
+                }, 3000); // Changed to 3 seconds
+            }
+
+            function closePopup() {
+                overlay.classList.remove('visible');
+                popupCard.style.opacity = '0';
+                popupCard.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 300);
             }
 
             // Close button functionality
-            document.querySelector('.popup-close').addEventListener('click', function() {
-                overlay.classList.remove('visible');
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                }, 300); // Match the transition duration
-            });
+            document.querySelector('.popup-close').addEventListener('click', closePopup);
 
             // Close on overlay click
             overlay.addEventListener('click', function(e) {
                 if (e.target === this) {
-                    overlay.classList.remove('visible');
-                    setTimeout(() => {
-                        overlay.style.display = 'none';
-                    }, 300);
+                    closePopup();
                 }
             });
         });
