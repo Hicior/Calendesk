@@ -143,6 +143,14 @@
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
         }
 
+        @media (max-width: 1545px) {
+            .popup-card {
+                transform: translate(-50%, -50%) scale(0.8);
+                top: 60%;
+            }
+        }
+
+
         @media (max-width: 768px) {
             .popup-card {
                 width: 90%;
@@ -295,11 +303,8 @@
             const overlay = document.querySelector('.popup-overlay');
             const popupCard = document.querySelector('.popup-card');
             
-            // Show popup immediately if not shown before
-            if (!localStorage.getItem('popupShown')) {
-                overlay.classList.add('visible');
-                localStorage.setItem('popupShown', 'true');
-            }
+            // Show popup immediately
+            overlay.classList.add('visible');
 
             function closePopup() {
                 overlay.classList.remove('visible');
